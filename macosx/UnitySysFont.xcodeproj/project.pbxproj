@@ -1,0 +1,265 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		332D56621580E956003B9E08 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 332D56611580E956003B9E08 /* Cocoa.framework */; };
+		332D56651580EFFC003B9E08 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 332D56641580EFFC003B9E08 /* OpenGL.framework */; };
+		335F31A41589B711008BC1E9 /* UnitySysFont.mm in Sources */ = {isa = PBXBuildFile; fileRef = 335F31A31589B711008BC1E9 /* UnitySysFont.mm */; };
+		33EE9B24157F58E400FDBC8F /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33EE9B23157F58E400FDBC8F /* CoreFoundation.framework */; };
+		33EE9B2A157F58E400FDBC8F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 33EE9B28157F58E400FDBC8F /* InfoPlist.strings */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		332D56611580E956003B9E08 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		332D56641580EFFC003B9E08 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		335F31A31589B711008BC1E9 /* UnitySysFont.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = UnitySysFont.mm; path = ../../unity/Assets/Plugins/iOS/UnitySysFont.mm; sourceTree = "<group>"; };
+		33EE9B20157F58E400FDBC8F /* SysFont.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SysFont.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		33EE9B23157F58E400FDBC8F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		33EE9B27157F58E400FDBC8F /* UnitySysFont-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitySysFont-Info.plist"; sourceTree = "<group>"; };
+		33EE9B29157F58E400FDBC8F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		33EE9B2B157F58E400FDBC8F /* UnitySysFont-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitySysFont-Prefix.pch"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		33EE9B1D157F58E400FDBC8F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				332D56651580EFFC003B9E08 /* OpenGL.framework in Frameworks */,
+				332D56621580E956003B9E08 /* Cocoa.framework in Frameworks */,
+				33EE9B24157F58E400FDBC8F /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		33EE9B15157F58E400FDBC8F = {
+			isa = PBXGroup;
+			children = (
+				332D56641580EFFC003B9E08 /* OpenGL.framework */,
+				332D56611580E956003B9E08 /* Cocoa.framework */,
+				33EE9B25157F58E400FDBC8F /* UnitySysFont */,
+				33EE9B22157F58E400FDBC8F /* Frameworks */,
+				33EE9B21157F58E400FDBC8F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		33EE9B21157F58E400FDBC8F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				33EE9B20157F58E400FDBC8F /* SysFont.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		33EE9B22157F58E400FDBC8F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				33EE9B23157F58E400FDBC8F /* CoreFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		33EE9B25157F58E400FDBC8F /* UnitySysFont */ = {
+			isa = PBXGroup;
+			children = (
+				335F31A31589B711008BC1E9 /* UnitySysFont.mm */,
+				33EE9B26157F58E400FDBC8F /* Supporting Files */,
+			);
+			path = UnitySysFont;
+			sourceTree = "<group>";
+		};
+		33EE9B26157F58E400FDBC8F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				33EE9B27157F58E400FDBC8F /* UnitySysFont-Info.plist */,
+				33EE9B28157F58E400FDBC8F /* InfoPlist.strings */,
+				33EE9B2B157F58E400FDBC8F /* UnitySysFont-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		33EE9B1F157F58E400FDBC8F /* SysFont */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 33EE9B2E157F58E400FDBC8F /* Build configuration list for PBXNativeTarget "SysFont" */;
+			buildPhases = (
+				33EE9B1C157F58E400FDBC8F /* Sources */,
+				33EE9B1D157F58E400FDBC8F /* Frameworks */,
+				33EE9B1E157F58E400FDBC8F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SysFont;
+			productName = UnitySysFont;
+			productReference = 33EE9B20157F58E400FDBC8F /* SysFont.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		33EE9B17157F58E400FDBC8F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = com.github.imkira;
+			};
+			buildConfigurationList = 33EE9B1A157F58E400FDBC8F /* Build configuration list for PBXProject "UnitySysFont" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 33EE9B15157F58E400FDBC8F;
+			productRefGroup = 33EE9B21157F58E400FDBC8F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				33EE9B1F157F58E400FDBC8F /* SysFont */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		33EE9B1E157F58E400FDBC8F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33EE9B2A157F58E400FDBC8F /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		33EE9B1C157F58E400FDBC8F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				335F31A41589B711008BC1E9 /* UnitySysFont.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		33EE9B28157F58E400FDBC8F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				33EE9B29157F58E400FDBC8F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		33EE9B2C157F58E400FDBC8F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		33EE9B2D157F58E400FDBC8F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		33EE9B2F157F58E400FDBC8F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UnitySysFont/UnitySysFont-Prefix.pch";
+				INFOPLIST_FILE = "UnitySysFont/UnitySysFont-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		33EE9B30157F58E400FDBC8F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UnitySysFont/UnitySysFont-Prefix.pch";
+				INFOPLIST_FILE = "UnitySysFont/UnitySysFont-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		33EE9B1A157F58E400FDBC8F /* Build configuration list for PBXProject "UnitySysFont" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				33EE9B2C157F58E400FDBC8F /* Debug */,
+				33EE9B2D157F58E400FDBC8F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		33EE9B2E157F58E400FDBC8F /* Build configuration list for PBXNativeTarget "SysFont" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				33EE9B2F157F58E400FDBC8F /* Debug */,
+				33EE9B30157F58E400FDBC8F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 33EE9B17157F58E400FDBC8F /* Project object */;
+}
