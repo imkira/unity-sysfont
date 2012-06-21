@@ -36,7 +36,7 @@ Here is a screenshot of unity-sysfont demo running on Unity Editor.
 And here is a picture of the
 [demo](https://github.com/downloads/imkira/unity-sysfont/unity-sysfont-demo.unitypackage)
 running on and Android and an iPhone.
-![Android and iPhone](https://github.com/downloads/imkira/unity-sysfont/editor.png)
+![Android and iPhone](https://github.com/downloads/imkira/unity-sysfont/android_iphone.png)
 
 ## Creating dynamic text 
 
