@@ -107,7 +107,7 @@ public class SysFontText : SysFontTexture
       if (_filter == null)
       {
         _filter = gameObject.AddComponent<MeshFilter>();
-        _filter.hideFlags = HideFlags.HideInInspector | HideFlags.DontSave;
+        _filter.hideFlags = HideFlags.HideInInspector;
       }
     }
 
@@ -117,7 +117,7 @@ public class SysFontText : SysFontTexture
       if (_renderer == null)
       {
         _renderer = gameObject.AddComponent<MeshRenderer>();
-        _renderer.hideFlags = HideFlags.HideInInspector | HideFlags.DontSave;
+        _renderer.hideFlags = HideFlags.HideInInspector;
       }
 
       if (_shader == null)
