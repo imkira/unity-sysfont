@@ -159,6 +159,55 @@ public class SysFont : MonoBehaviour
     UnitySysFontInstance.Call("processQueue");
   }
 
+#else
+
+  private static void _SysFontQueueTexture(string text,
+      string fontName, int fontSize, bool isBold, bool isItalic,
+      Alignment alignment, int maxWidthPixels, int maxHeightPixels,
+      int textureID)
+  {
+    // dummy function: just don't fail the build
+  }
+
+  private static void _SysFontUpdateQueuedTexture(int textureID)
+  {
+    // dummy function: just don't fail the build
+  }
+
+  private static void _SysFontDequeueTexture(int textureID)
+  {
+    // dummy function: just don't fail the build
+  }
+
+  private static int _SysFontGetTextureWidth(int textureID)
+  {
+    // dummy function: just don't fail the build
+    return 0;
+  }
+
+  private static int _SysFontGetTextureHeight(int textureID)
+  {
+    // dummy function: just don't fail the build
+    return 0;
+  }
+
+  private static int _SysFontGetTextWidth(int textureID)
+  {
+    // dummy function: just don't fail the build
+    return 0;
+  }
+
+  private static int _SysFontGetTextHeight(int textureID)
+  {
+    // dummy function: just don't fail the build
+    return 0;
+  }
+
+  private static void _SysFontRender()
+  {
+    // dummy function: just don't fail the build
+  }
+
 #endif
 
   public static int GetTextureWidth(int textureID)

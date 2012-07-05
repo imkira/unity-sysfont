@@ -114,6 +114,9 @@ public class SysFontTexture : MonoBehaviour
       return AppleFontName;
 #elif UNITY_ANDROID
       return AndroidFontName;
+#else
+      // just don't fail the build
+      return AppleFontName;
 #endif
     }
     set
@@ -122,6 +125,9 @@ public class SysFontTexture : MonoBehaviour
       AppleFontName = value;
 #elif UNITY_ANDROID
       AndroidFontName = value;
+#else
+      // just don't fail the build
+      AppleFontName = value;
 #endif
     }
   }
