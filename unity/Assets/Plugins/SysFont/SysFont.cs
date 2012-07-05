@@ -27,6 +27,13 @@ using System.Runtime.InteropServices;
 
 public class SysFont : MonoBehaviour
 {
+  public enum Alignment 
+  {
+    Left = 0,
+    Center = 1,
+    Right = 2
+  }
+
 #if UNITY_EDITOR || UNITY_STANDALONE_OSX || UNITY_IPHONE
 
 #if UNITY_EDITOR || UNITY_STANDALONE_OSX
@@ -36,7 +43,8 @@ public class SysFont : MonoBehaviour
 #endif
   private static extern void _SysFontQueueTexture(string text,
       string fontName, int fontSize, bool isBold, bool isItalic,
-      int maxWidthPixels, int maxHeightPixels, int textureID);
+      Alignment alignment, int maxWidthPixels, int maxHeightPixels,
+      int textureID);
 
 #if UNITY_EDITOR || UNITY_STANDALONE_OSX
   [DllImport("SysFont")]
@@ -108,10 +116,12 @@ public class SysFont : MonoBehaviour
 
   private static void _SysFontQueueTexture(string text,
       string fontName, int fontSize, bool isBold, bool isItalic,
-      int maxWidthPixels, int maxHeightPixels, int textureID)
+      Alignment alignment, int maxWidthPixels, int maxHeightPixels,
+      int textureID)
   {
     UnitySysFontInstance.Call("queueTexture", text, fontName, fontSize,
-        isBold, isItalic, maxWidthPixels, maxHeightPixels, textureID);
+        isBold, isItalic, (int)alignment, maxWidthPixels, maxHeightPixels,
+        textureID);
   }
 
   private static void _SysFontUpdateQueuedTexture(int textureID)
@@ -172,15 +182,15 @@ public class SysFont : MonoBehaviour
   }
 
   public static void QueueTexture(string text, string fontName,
-      int fontSize, bool isBold, bool isItalic, bool isMultiLine,
-      int maxWidthPixels, int maxHeightPixels, int textureID)
+      int fontSize, bool isBold, bool isItalic, Alignment alignment,
+      bool isMultiLine, int maxWidthPixels, int maxHeightPixels, int textureID)
   {
     if (isMultiLine == false)
     {
       text = text.Replace("\r\n", "").Replace("\n", "");
     }
     _SysFontQueueTexture(text, fontName, fontSize, isBold, isItalic,
-        maxWidthPixels, maxHeightPixels, textureID);
+        alignment, maxWidthPixels, maxHeightPixels, textureID);
   }
 
   public static void UpdateQueuedTexture(int textureID)

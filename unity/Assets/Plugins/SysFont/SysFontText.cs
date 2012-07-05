@@ -30,8 +30,21 @@ public class SysFontText : SysFontTexture
   [SerializeField]
   protected Color _fontColor = Color.white;
 
+  public enum PivotAlignment
+  {
+    TopLeft,
+    Top,
+    TopRight,
+    Left,
+    Center,
+    Right,
+    BottomLeft,
+    Bottom,
+    BottomRight
+  }
+
   [SerializeField]
-  protected Alignment _pivot = Alignment.Center;
+  protected PivotAlignment _pivot = PivotAlignment.Center;
 
   protected Color _lastFontColor;
   public Color FontColor
@@ -49,8 +62,8 @@ public class SysFontText : SysFontTexture
     }
   }
 
-  protected Alignment _lastPivot;
-  public Alignment Pivot 
+  protected PivotAlignment _lastPivot;
+  public PivotAlignment Pivot
   {
     get
     {
@@ -167,14 +180,16 @@ public class SysFontText : SysFontTexture
     }
 
     // horizontal
-    if ((_pivot == Alignment.TopLeft) || (_pivot == Alignment.Left) ||
-        (_pivot == Alignment.BottomLeft))
+    if ((_pivot == PivotAlignment.TopLeft) ||
+        (_pivot == PivotAlignment.Left) ||
+        (_pivot == PivotAlignment.BottomLeft))
     {
       _vertices[0].x = _vertices[2].x = 0f;
       _vertices[1].x = _vertices[3].x = 1f;
     }
-    else if ((_pivot == Alignment.TopRight) || (_pivot == Alignment.Right) ||
-        (_pivot == Alignment.BottomRight))
+    else if ((_pivot == PivotAlignment.TopRight) ||
+        (_pivot == PivotAlignment.Right) ||
+        (_pivot == PivotAlignment.BottomRight))
     {
       _vertices[0].x = _vertices[2].x = -1f;
       _vertices[1].x = _vertices[3].x = 0f;
@@ -186,14 +201,16 @@ public class SysFontText : SysFontTexture
     }
 
     // vertical
-    if ((_pivot == Alignment.TopLeft) || (_pivot == Alignment.Top) ||
-        (_pivot == Alignment.TopRight))
+    if ((_pivot == PivotAlignment.TopLeft) ||
+        (_pivot == PivotAlignment.Top) ||
+        (_pivot == PivotAlignment.TopRight))
     {
       _vertices[0].y = _vertices[1].y = -1f;
       _vertices[2].y = _vertices[3].y = 0f;
     }
-    else if ((_pivot == Alignment.BottomLeft) || (_pivot == Alignment.Bottom) ||
-        (_pivot == Alignment.BottomRight))
+    else if ((_pivot == PivotAlignment.BottomLeft) ||
+        (_pivot == PivotAlignment.Bottom) ||
+        (_pivot == PivotAlignment.BottomRight))
     {
       _vertices[0].y = _vertices[1].y = 0f;
       _vertices[2].y = _vertices[3].y = 1f;

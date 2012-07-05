@@ -48,6 +48,9 @@ public class SysFontTexture : MonoBehaviour
   protected bool _isItalic = false;
 
   [SerializeField]
+  protected SysFont.Alignment _alignment = SysFont.Alignment.Left;
+
+  [SerializeField]
   protected bool _isMultiLine = true;
 
   [SerializeField]
@@ -55,19 +58,6 @@ public class SysFontTexture : MonoBehaviour
 
   [SerializeField]
   protected int _maxHeightPixels = 2048;
-
-  public enum Alignment 
-  {
-    TopLeft,
-    Top,
-    TopRight,
-    Left,
-    Center,
-    Right,
-    BottomLeft,
-    Bottom,
-    BottomRight
-  }
 
   protected string _lastText;
   public string Text
@@ -184,6 +174,22 @@ public class SysFontTexture : MonoBehaviour
     }
   }
 
+  protected SysFont.Alignment _lastAlignment;
+  public SysFont.Alignment Alignment
+  {
+    get
+    {
+      return _alignment;
+    }
+    set
+    {
+      if (_alignment != value)
+      {
+        _alignment = value;
+      }
+    }
+  }
+
   protected bool _lastIsMultiLine;
   public bool IsMultiLine
   {
@@ -286,6 +292,7 @@ public class SysFontTexture : MonoBehaviour
         (_fontSize != _lastFontSize) ||
         (_isBold != _lastIsBold) ||
         (_isItalic != _lastIsItalic) ||
+        (_alignment != _lastAlignment) ||
         (_isMultiLine != _lastIsMultiLine) ||
         (_maxWidthPixels != _lastMaxWidthPixels) ||
         (_maxHeightPixels != _lastMaxHeightPixels);
@@ -328,7 +335,8 @@ public class SysFontTexture : MonoBehaviour
     int textureID = _texture.GetNativeTextureID();
 
     SysFont.QueueTexture(_text, FontName, _fontSize, _isBold,
-        _isItalic, _isMultiLine, _maxWidthPixels, _maxHeightPixels, textureID);
+        _isItalic, _alignment, _isMultiLine, _maxWidthPixels,
+        _maxHeightPixels, textureID);
 
     _textWidthPixels = SysFont.GetTextWidth(textureID);
     _textHeightPixels = SysFont.GetTextHeight(textureID);
@@ -342,6 +350,7 @@ public class SysFontTexture : MonoBehaviour
     _lastFontSize = _fontSize;
     _lastIsBold = _isBold;
     _lastIsItalic = _isItalic;
+    _lastAlignment = _alignment;
     _lastIsMultiLine = _isMultiLine;
     _lastMaxWidthPixels = _maxWidthPixels;
     _lastMaxHeightPixels = _maxHeightPixels;

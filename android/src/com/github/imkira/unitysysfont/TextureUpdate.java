@@ -41,6 +41,7 @@ public class TextureUpdate {
   private int fontSize;
   private boolean isBold;
   private boolean isItalic;
+  private int alignment;
   private int maxWidthPixels;
   private int maxHeightPixels;
   private int textureID;
@@ -55,13 +56,14 @@ public class TextureUpdate {
   private StaticLayout layout;
   
   public TextureUpdate(String text, String fontName, int fontSize,
-      boolean isBold, boolean isItalic, int maxWidthPixels,
+      boolean isBold, boolean isItalic, int alignment, int maxWidthPixels,
       int maxHeightPixels, int textureID) {
     this.text = text;
     this.fontName = fontName;
     this.fontSize = fontSize;
     this.isBold = isBold;
     this.isItalic = isItalic;
+    this.alignment = alignment;
     this.maxWidthPixels = maxWidthPixels;
     this.maxHeightPixels = maxHeightPixels;
     this.textureID = textureID;
@@ -136,8 +138,17 @@ public class TextureUpdate {
       textWidth = 1;
     }
 
+    Layout.Alignment _alignment = Layout.Alignment.ALIGN_NORMAL;
+
+    if (alignment == 1) {
+      _alignment = Layout.Alignment.ALIGN_CENTER;
+    }
+    else if (alignment == 2) {
+      _alignment = Layout.Alignment.ALIGN_OPPOSITE;
+    }
+
     layout = new StaticLayout(text, paint, textWidth,
-        Layout.Alignment.ALIGN_NORMAL, 1, 0, false);
+        _alignment, 1, 0, false);
 
     textHeight = (int)Math.ceil(layout.getHeight());
     if (textHeight > maxHeightPixels) {

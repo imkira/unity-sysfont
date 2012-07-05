@@ -101,7 +101,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 178.450439, y: -103.17128, z: 0}
   m_LocalScale: {x: 100, y: 96, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1285649823}
 --- !u!23 &94609597
@@ -139,12 +138,13 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0626d3933ca0f461da23d3dde347e0a2, type: 1}
   m_Name: 
-  _text: "wrapped text\n\u3053\u3093\u306B\u3061\u306F\u4E16\u754C"
+  _text: "wrapped right\n\u3053\u3093\u306B\u3061\u306F\u4E16\u754C"
   _appleFontName: 
   _androidFontName: 
   _fontSize: 20
   _isBold: 0
   _isItalic: 0
+  _alignment: 2
   _isMultiLine: 1
   _maxWidthPixels: 100
   _maxHeightPixels: 100
@@ -177,7 +177,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 26.7305565, y: -103.17128, z: 0}
   m_LocalScale: {x: 128, y: 12, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1285649823}
 --- !u!23 &188778783
@@ -221,6 +220,7 @@ MonoBehaviour:
   _fontSize: 20
   _isBold: 0
   _isItalic: 0
+  _alignment: 0
   _isMultiLine: 1
   _maxWidthPixels: 128
   _maxHeightPixels: 12
@@ -253,7 +253,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 62.774231, z: 0}
   m_LocalScale: {x: 350, y: 122, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1285649823}
 --- !u!23 &444223369
@@ -297,6 +296,7 @@ MonoBehaviour:
   _fontSize: 50
   _isBold: 1
   _isItalic: 0
+  _alignment: 1
   _isMultiLine: 1
   _maxWidthPixels: 2048
   _maxHeightPixels: 2048
@@ -330,7 +330,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 380, z: 0}
   m_LocalScale: {x: 29, y: 19, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1285649823}
 --- !u!23 &666863432
@@ -374,6 +373,7 @@ MonoBehaviour:
   _fontSize: 16
   _isBold: 1
   _isItalic: 0
+  _alignment: 0
   _isMultiLine: 1
   _maxWidthPixels: 2048
   _maxHeightPixels: 2048
@@ -417,7 +417,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -359.328522, z: 0}
   m_LocalScale: {x: 656, y: 45, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1285649823}
 --- !u!23 &689747625
@@ -461,6 +460,7 @@ MonoBehaviour:
   _fontSize: 40
   _isBold: 1
   _isItalic: 0
+  _alignment: 0
   _isMultiLine: 1
   _maxWidthPixels: 2048
   _maxHeightPixels: 2048
@@ -493,7 +493,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: .0481785499, z: 0}
   m_LocalScale: {x: 656, y: 45, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1285649823}
 --- !u!23 &755630205
@@ -537,6 +536,7 @@ MonoBehaviour:
   _fontSize: 40
   _isBold: 1
   _isItalic: 0
+  _alignment: 0
   _isMultiLine: 1
   _maxWidthPixels: 2048
   _maxHeightPixels: 2048
@@ -569,7 +569,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 337.762451, z: 0}
   m_LocalScale: {x: 656, y: 45, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1285649823}
 --- !u!23 &1133788903
@@ -613,6 +612,7 @@ MonoBehaviour:
   _fontSize: 40
   _isBold: 1
   _isItalic: 0
+  _alignment: 0
   _isMultiLine: 1
   _maxWidthPixels: 2048
   _maxHeightPixels: 2048
@@ -644,8 +644,7 @@ Transform:
   m_GameObject: {fileID: 1189286463}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -226.069565, y: -103.17128, z: 0}
-  m_LocalScale: {x: 60, y: 80, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 62, y: 80, z: 1}
   m_Children: []
   m_Father: {fileID: 1285649823}
 --- !u!23 &1189286465
@@ -683,12 +682,13 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0626d3933ca0f461da23d3dde347e0a2, type: 1}
   m_Name: 
-  _text: "Cropped text\n\u3053\u3093\u306B\u3061\u306F\u4E16\u754C"
+  _text: "Cropped left\n\u3053\u3093\u306B\u3061\u306F\u4E16\u754C"
   _appleFontName: 
   _androidFontName: 
   _fontSize: 20
   _isBold: 0
   _isItalic: 0
+  _alignment: 0
   _isMultiLine: 1
   _maxWidthPixels: 64
   _maxHeightPixels: 80
@@ -718,8 +718,7 @@ Transform:
   m_GameObject: {fileID: 1285649822}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .211999997, y: .211999997, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: .213, y: .213, z: 1}
   m_Children:
   - {fileID: 444223368}
   - {fileID: 1782648239}
@@ -773,7 +772,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -184.019745, z: 0}
   m_LocalScale: {x: 656, y: 45, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1285649823}
 --- !u!23 &1380385470
@@ -817,6 +815,7 @@ MonoBehaviour:
   _fontSize: 40
   _isBold: 1
   _isItalic: 0
+  _alignment: 0
   _isMultiLine: 1
   _maxWidthPixels: 2048
   _maxHeightPixels: 2048
@@ -850,7 +849,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!20 &1742665745
@@ -929,7 +927,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 230, z: 0}
   m_LocalScale: {x: 360, y: 96, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1285649823}
 --- !u!23 &1782648240
@@ -973,6 +970,7 @@ MonoBehaviour:
   _fontSize: 40
   _isBold: 1
   _isItalic: 1
+  _alignment: 1
   _isMultiLine: 1
   _maxWidthPixels: 2048
   _maxHeightPixels: 2048
@@ -1004,8 +1002,7 @@ Transform:
   m_GameObject: {fileID: 1991530966}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -99.2782593, y: -103.17128, z: 0}
-  m_LocalScale: {x: 60, y: 128, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 61, y: 128, z: 1}
   m_Children: []
   m_Father: {fileID: 1285649823}
 --- !u!23 &1991530968
@@ -1043,12 +1040,13 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0626d3933ca0f461da23d3dde347e0a2, type: 1}
   m_Name: 
-  _text: "Cropped text\n\u3053\u3093\u306B\u3061\u306F\u4E16\u754C"
+  _text: "Cropped center\n\u3053\u3093\u306B\u3061\u306F\u4E16\u754C"
   _appleFontName: 
   _androidFontName: 
   _fontSize: 20
   _isBold: 0
   _isItalic: 0
+  _alignment: 1
   _isMultiLine: 1
   _maxWidthPixels: 64
   _maxHeightPixels: 128
@@ -1081,7 +1079,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 139.484619, z: 0}
   m_LocalScale: {x: 656, y: 45, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1285649823}
 --- !u!23 &2006342780
@@ -1125,6 +1122,7 @@ MonoBehaviour:
   _fontSize: 40
   _isBold: 1
   _isItalic: 0
+  _alignment: 0
   _isMultiLine: 1
   _maxWidthPixels: 2048
   _maxHeightPixels: 2048
@@ -1157,7 +1155,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -282.983215, z: 0}
   m_LocalScale: {x: 420, y: 144, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1285649823}
 --- !u!23 &2115293280
@@ -1201,6 +1198,7 @@ MonoBehaviour:
   _fontSize: 60
   _isBold: 0
   _isItalic: 0
+  _alignment: 0
   _isMultiLine: 1
   _maxWidthPixels: 2048
   _maxHeightPixels: 2048

@@ -38,14 +38,14 @@ public class SysFontTextureEditor : Editor
     //
     // Text property
     //
-		string text = string.IsNullOrEmpty(_texture.Text) ? "" : _texture.Text;
+    string text = string.IsNullOrEmpty(_texture.Text) ? "" : _texture.Text;
 
     EditorGUILayout.LabelField("Text");
-		GUI.skin.textArea.wordWrap = true;
-		text = EditorGUILayout.TextArea(text, GUI.skin.textArea,
+    GUI.skin.textArea.wordWrap = true;
+    text = EditorGUILayout.TextArea(text, GUI.skin.textArea,
         GUILayout.Height(50f));
 
-		if (text.Equals(_texture.Text) == false)
+    if (text.Equals(_texture.Text) == false)
     {
       RegisterUndo("SysFont Text Change");
       _texture.Text = text;
@@ -91,8 +91,22 @@ public class SysFontTextureEditor : Editor
         RegisterUndo("SysFont Style Change");
         _texture.IsItalic = isItalic;
       }
+
+      LookLikeControls(60f);
+
+      //
+      // Pivot property
+      //
+      SysFont.Alignment alignment;
+      alignment = (SysFont.Alignment)EditorGUILayout.EnumPopup("Alignment",
+          _texture.Alignment, GUILayout.Width(120f));
+      if (alignment != _texture.Alignment)
+      {
+        RegisterUndo("SysFont Alignment Change");
+        _texture.Alignment = alignment;
+      }
     }
-		GUILayout.EndHorizontal();
+    GUILayout.EndHorizontal();
 
     LookLikeControls(100f);
     //
@@ -159,12 +173,12 @@ public class SysFontTextureEditor : Editor
 
       LookLikeControls();
     }
-		GUILayout.EndHorizontal();
+    GUILayout.EndHorizontal();
   }
 
   protected void LookLikeControls(float labelWidth = 70f)
   {
-		EditorGUIUtility.LookLikeControls(labelWidth);
+    EditorGUIUtility.LookLikeControls(labelWidth);
   }
 
   protected virtual void RegisterUndo(string name)

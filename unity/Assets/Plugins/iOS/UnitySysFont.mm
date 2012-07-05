@@ -59,6 +59,7 @@ int nextPowerOfTwo(int n)
   int fontSize;
   BOOL isBold;
   BOOL isItalic;
+  int alignment;
   int maxWidthPixels;
   int maxHeightPixels;
   int textureID;
@@ -95,8 +96,8 @@ int nextPowerOfTwo(int n)
 
 - (id)initWithText:(const char *)_text fontName:(const char *)_fontName
 fontSize:(int)_fontSize isBold:(BOOL)_isBold isItalic:(BOOL)_isItalic
-maxWidthPixels:(int)_maxWidthPixels maxHeightPixels:(int)_maxHeightPixels
-textureID:(int)_textureID
+alignment:(int)_alignment maxWidthPixels:(int)_maxWidthPixels
+maxHeightPixels:(int)_maxHeightPixels textureID:(int)_textureID
 {
   self = [super init];
 
@@ -109,6 +110,7 @@ textureID:(int)_textureID
     fontSize = _fontSize;
     isBold = _isBold;
     isItalic = _isItalic;
+    alignment = _alignment;
     maxWidthPixels = _maxWidthPixels;
     maxHeightPixels = _maxHeightPixels;
     textureID = _textureID;
@@ -207,10 +209,27 @@ textureID:(int)_textureID
   boundsSize = [text sizeWithFont:[self font] constrainedToSize:maxSize
     lineBreakMode:UILineBreakModeWordWrap];
 #elif TARGET_OS_MAC
+
+  NSTextAlignment _alignment = NSLeftTextAlignment;
+
+  if (alignment == 1)
+  {
+    _alignment = NSCenterTextAlignment;
+  }
+  else if (alignment == 2)
+  {
+    _alignment = NSRightTextAlignment;
+  }
+
+  NSMutableParagraphStyle *parStyle = [[NSMutableParagraphStyle alloc] init];
+  [parStyle setAlignment:_alignment];
+  [parStyle setLineBreakMode:NSLineBreakByWordWrapping];
+
   NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
     [self font], NSFontAttributeName,
     [NSColor whiteColor], NSForegroundColorAttributeName,
-    [NSColor clearColor], NSBackgroundColorAttributeName, nil];
+    [NSColor clearColor], NSBackgroundColorAttributeName,
+    parStyle, NSParagraphStyleAttributeName, nil];
 
   attributedString = [[NSAttributedString alloc] 
     initWithString:text attributes:attributes];
@@ -262,8 +281,20 @@ textureID:(int)_textureID
 
   CGRect drawRect = CGRectMake(0.f, (float)(textureHeight - textHeight),
       textWidth, textHeight);
+
+  UITextAlignment _alignment = UITextAlignmentLeft;
+
+  if (alignment == 1)
+  {
+    _alignment = UITextAlignmentCenter;
+  }
+  else if (alignment == 2)
+  {
+    _alignment = UITextAlignmentRight;
+  }
+
   [text drawInRect:drawRect withFont:[self font]
-    lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentLeft];
+    lineBreakMode:UILineBreakModeWordWrap alignment:_alignment];
 
   UIGraphicsPopContext();
 
@@ -424,8 +455,8 @@ static UnitySysFontTextureManager *sharedInstance;
 extern "C"
 {
   void _SysFontQueueTexture(const char *text, const char *fontName,
-      int fontSize, BOOL isBold, BOOL isItalic, int maxWidthPixels,
-      int maxHeightPixels, int textureID);
+      int fontSize, BOOL isBold, BOOL isItalic, int alignment,
+      int maxWidthPixels, int maxHeightPixels, int textureID);
 
   int _SysFontGetTextureWidth(int textureID);
 
@@ -445,16 +476,16 @@ extern "C"
 }
 
 void _SysFontQueueTexture(const char *text, const char *fontName,
-    int fontSize, BOOL isBold, BOOL isItalic, int maxWidthPixels,
-    int maxHeightPixels, int textureID)
+    int fontSize, BOOL isBold, BOOL isItalic, int alignment,
+    int maxWidthPixels, int maxHeightPixels, int textureID)
 {
   UnitySysFontTextureManager *instance;
   UnitySysFontTextureUpdate *update;
 
   update = [[UnitySysFontTextureUpdate alloc] initWithText:text
     fontName:fontName fontSize:fontSize isBold:isBold isItalic:isItalic
-    maxWidthPixels:maxWidthPixels maxHeightPixels:maxHeightPixels
-    textureID:textureID];
+    alignment:alignment maxWidthPixels:maxWidthPixels
+    maxHeightPixels:maxHeightPixels textureID:textureID];
 
   instance = [UnitySysFontTextureManager sharedInstance];
   @synchronized(instance)

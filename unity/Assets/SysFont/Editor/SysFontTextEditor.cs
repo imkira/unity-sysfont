@@ -56,8 +56,8 @@ public class SysFontTextEditor : SysFontTextureEditor
       //
       // Pivot property
       //
-      SysFontTexture.Alignment pivot;
-      pivot = (SysFontTexture.Alignment)EditorGUILayout.EnumPopup("Pivot",
+      SysFontText.PivotAlignment pivot;
+      pivot = (SysFontText.PivotAlignment)EditorGUILayout.EnumPopup("Pivot",
           _text.Pivot, GUILayout.Width(130f));
       if (pivot != _text.Pivot)
       {
@@ -67,7 +67,7 @@ public class SysFontTextEditor : SysFontTextureEditor
 
       LookLikeControls();
     }
-		GUILayout.EndHorizontal();
+    GUILayout.EndHorizontal();
   }
 
   protected override void RegisterUndo(string name)
