@@ -9,7 +9,7 @@ dynamic text using the fonts available on the mobile device/computer.
 * Multi-platform: iOS/Android/MacOSX support.
 * Unity Editor support: customize the text within the editor and confirm the
   results immediately.
-* Customizable: change the font family, size, style, color, and more.
+* Customizable: change the font family, size, style, color, alignment, and more.
 * Optimized: Alpha-only textures and dynamic texture size adjustment.
 * Programmable: the same fields available in the editor are exposed as
   properties that you can change programatically.
@@ -150,6 +150,13 @@ times fix this glitch.
 This problem does not happen on iOS/Android, so I believe it may be related
 to the multi-threaded rendering feature that is used on Unity.
 I am investigating this problem, and I hope to fix it ASAP.
+
+## Limitations
+
+* unity-sysfont is not currently supported on Windows (I have plans to support
+  it in the near future). Keep in touch!
+* Due to the limitations on the webplayer platform, unity-sysfont may never be
+  possible on such platform.
 
 ## Contribute
 
