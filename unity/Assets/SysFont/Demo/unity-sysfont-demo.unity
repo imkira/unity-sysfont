@@ -100,7 +100,7 @@ Transform:
   m_GameObject: {fileID: 94609595}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 178.450439, y: -103.17128, z: 0}
-  m_LocalScale: {x: 100, y: 96, z: 1}
+  m_LocalScale: {x: 100, y: 72, z: 1}
   m_Children: []
   m_Father: {fileID: 1285649823}
 --- !u!23 &94609597
@@ -138,16 +138,17 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0626d3933ca0f461da23d3dde347e0a2, type: 1}
   m_Name: 
-  _text: "wrapped right\n\u3053\u3093\u306B\u3061\u306F\u4E16\u754C"
-  _appleFontName: 
-  _androidFontName: 
-  _fontSize: 20
-  _isBold: 0
-  _isItalic: 0
-  _alignment: 2
-  _isMultiLine: 1
-  _maxWidthPixels: 100
-  _maxHeightPixels: 100
+  _texture:
+    _text: "wrapped right \u3053\u3093\u306B\u3061\u306F\u4E16\u754C"
+    _appleFontName: 
+    _androidFontName: 
+    _fontSize: 20
+    _isBold: 0
+    _isItalic: 0
+    _alignment: 2
+    _isMultiLine: 1
+    _maxWidthPixels: 100
+    _maxHeightPixels: 100
   _fontColor: {r: 1, g: .398601413, b: 0, a: 1}
   _pivot: 4
 --- !u!1 &188778781
@@ -176,7 +177,7 @@ Transform:
   m_GameObject: {fileID: 188778781}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 26.7305565, y: -103.17128, z: 0}
-  m_LocalScale: {x: 128, y: 12, z: 1}
+  m_LocalScale: {x: 128, y: 15, z: 1}
   m_Children: []
   m_Father: {fileID: 1285649823}
 --- !u!23 &188778783
@@ -214,16 +215,17 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0626d3933ca0f461da23d3dde347e0a2, type: 1}
   m_Name: 
-  _text: "Cropped text\n\u3053\u3093\u306B\u3061\u306F\u4E16\u754C"
-  _appleFontName: 
-  _androidFontName: 
-  _fontSize: 20
-  _isBold: 0
-  _isItalic: 0
-  _alignment: 0
-  _isMultiLine: 1
-  _maxWidthPixels: 128
-  _maxHeightPixels: 12
+  _texture:
+    _text: "Cropped text \u3053\u3093\u306B\u3061\u306F\u4E16\u754C"
+    _appleFontName: 
+    _androidFontName: 
+    _fontSize: 20
+    _isBold: 0
+    _isItalic: 0
+    _alignment: 0
+    _isMultiLine: 1
+    _maxWidthPixels: 128
+    _maxHeightPixels: 15
   _fontColor: {r: 1, g: .398601413, b: 0, a: 1}
   _pivot: 4
 --- !u!1 &444223367
@@ -252,7 +254,7 @@ Transform:
   m_GameObject: {fileID: 444223367}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 62.774231, z: 0}
-  m_LocalScale: {x: 350, y: 122, z: 1}
+  m_LocalScale: {x: 450, y: 122, z: 1}
   m_Children: []
   m_Father: {fileID: 1285649823}
 --- !u!23 &444223369
@@ -290,16 +292,17 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0626d3933ca0f461da23d3dde347e0a2, type: 1}
   m_Name: 
-  _text: "Unity SysFont\n\u3053\u3093\u306B\u3061\u306F\u4E16\u754C"
-  _appleFontName: Helvetica-Bold
-  _androidFontName: Droid Sans Fallback
-  _fontSize: 50
-  _isBold: 1
-  _isItalic: 0
-  _alignment: 1
-  _isMultiLine: 1
-  _maxWidthPixels: 2048
-  _maxHeightPixels: 2048
+  _texture:
+    _text: "Unity SysFont\n\u2661\u3053\u3093\u306B\u3061\u306F\u4E16\u754C\u2661"
+    _appleFontName: Helvetica-Bold
+    _androidFontName: Droid Sans Fallback
+    _fontSize: 50
+    _isBold: 1
+    _isItalic: 0
+    _alignment: 1
+    _isMultiLine: 1
+    _maxWidthPixels: 2048
+    _maxHeightPixels: 2048
   _fontColor: {r: 1, g: 0, b: 0, a: 1}
   _pivot: 4
 --- !u!1 &666863430
@@ -329,7 +332,7 @@ Transform:
   m_GameObject: {fileID: 666863430}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 380, z: 0}
-  m_LocalScale: {x: 29, y: 19, z: 1}
+  m_LocalScale: {x: 1, y: 15, z: 1}
   m_Children: []
   m_Father: {fileID: 1285649823}
 --- !u!23 &666863432
@@ -367,16 +370,17 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0626d3933ca0f461da23d3dde347e0a2, type: 1}
   m_Name: 
-  _text: FPS
-  _appleFontName: 
-  _androidFontName: 
-  _fontSize: 16
-  _isBold: 1
-  _isItalic: 0
-  _alignment: 0
-  _isMultiLine: 1
-  _maxWidthPixels: 2048
-  _maxHeightPixels: 2048
+  _texture:
+    _text: 
+    _appleFontName: 
+    _androidFontName: 
+    _fontSize: 16
+    _isBold: 1
+    _isItalic: 0
+    _alignment: 0
+    _isMultiLine: 1
+    _maxWidthPixels: 2048
+    _maxHeightPixels: 2048
   _fontColor: {r: 1, g: 1, b: 1, a: 1}
   _pivot: 4
 --- !u!114 &666863435
@@ -454,16 +458,17 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0626d3933ca0f461da23d3dde347e0a2, type: 1}
   m_Name: 
-  _text: '...........................................................'
-  _appleFontName: Arial
-  _androidFontName: Arial
-  _fontSize: 40
-  _isBold: 1
-  _isItalic: 0
-  _alignment: 0
-  _isMultiLine: 1
-  _maxWidthPixels: 2048
-  _maxHeightPixels: 2048
+  _texture:
+    _text: '...........................................................'
+    _appleFontName: Arial
+    _androidFontName: Arial
+    _fontSize: 40
+    _isBold: 1
+    _isItalic: 0
+    _alignment: 0
+    _isMultiLine: 1
+    _maxWidthPixels: 2048
+    _maxHeightPixels: 2048
   _fontColor: {r: .88811183, g: 1, b: 0, a: 1}
   _pivot: 4
 --- !u!1 &755630203
@@ -530,16 +535,17 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0626d3933ca0f461da23d3dde347e0a2, type: 1}
   m_Name: 
-  _text: '...........................................................'
-  _appleFontName: Arial
-  _androidFontName: Arial
-  _fontSize: 40
-  _isBold: 1
-  _isItalic: 0
-  _alignment: 0
-  _isMultiLine: 1
-  _maxWidthPixels: 2048
-  _maxHeightPixels: 2048
+  _texture:
+    _text: '...........................................................'
+    _appleFontName: Arial
+    _androidFontName: Arial
+    _fontSize: 40
+    _isBold: 1
+    _isItalic: 0
+    _alignment: 0
+    _isMultiLine: 1
+    _maxWidthPixels: 2048
+    _maxHeightPixels: 2048
   _fontColor: {r: .88811183, g: 1, b: 0, a: 1}
   _pivot: 4
 --- !u!1 &1133788901
@@ -606,16 +612,17 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0626d3933ca0f461da23d3dde347e0a2, type: 1}
   m_Name: 
-  _text: '...........................................................'
-  _appleFontName: Arial
-  _androidFontName: Arial
-  _fontSize: 40
-  _isBold: 1
-  _isItalic: 0
-  _alignment: 0
-  _isMultiLine: 1
-  _maxWidthPixels: 2048
-  _maxHeightPixels: 2048
+  _texture:
+    _text: '...........................................................'
+    _appleFontName: Arial
+    _androidFontName: Arial
+    _fontSize: 40
+    _isBold: 1
+    _isItalic: 0
+    _alignment: 0
+    _isMultiLine: 1
+    _maxWidthPixels: 2048
+    _maxHeightPixels: 2048
   _fontColor: {r: .88811183, g: 1, b: 0, a: 1}
   _pivot: 4
 --- !u!1 &1189286463
@@ -644,7 +651,7 @@ Transform:
   m_GameObject: {fileID: 1189286463}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -226.069565, y: -103.17128, z: 0}
-  m_LocalScale: {x: 62, y: 80, z: 1}
+  m_LocalScale: {x: 64, y: 80, z: 1}
   m_Children: []
   m_Father: {fileID: 1285649823}
 --- !u!23 &1189286465
@@ -682,16 +689,17 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0626d3933ca0f461da23d3dde347e0a2, type: 1}
   m_Name: 
-  _text: "Cropped left\n\u3053\u3093\u306B\u3061\u306F\u4E16\u754C"
-  _appleFontName: 
-  _androidFontName: 
-  _fontSize: 20
-  _isBold: 0
-  _isItalic: 0
-  _alignment: 0
-  _isMultiLine: 1
-  _maxWidthPixels: 64
-  _maxHeightPixels: 80
+  _texture:
+    _text: "Cropped left \u3053\u3093\u306B\u3061\u306F\u4E16\u754C"
+    _appleFontName: 
+    _androidFontName: 
+    _fontSize: 20
+    _isBold: 0
+    _isItalic: 0
+    _alignment: 0
+    _isMultiLine: 1
+    _maxWidthPixels: 64
+    _maxHeightPixels: 80
   _fontColor: {r: 1, g: .398601413, b: 0, a: 1}
   _pivot: 4
 --- !u!1 &1285649822
@@ -809,16 +817,17 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0626d3933ca0f461da23d3dde347e0a2, type: 1}
   m_Name: 
-  _text: '...........................................................'
-  _appleFontName: Arial
-  _androidFontName: Arial
-  _fontSize: 40
-  _isBold: 1
-  _isItalic: 0
-  _alignment: 0
-  _isMultiLine: 1
-  _maxWidthPixels: 2048
-  _maxHeightPixels: 2048
+  _texture:
+    _text: '...........................................................'
+    _appleFontName: Arial
+    _androidFontName: Arial
+    _fontSize: 40
+    _isBold: 1
+    _isItalic: 0
+    _alignment: 0
+    _isMultiLine: 1
+    _maxWidthPixels: 2048
+    _maxHeightPixels: 2048
   _fontColor: {r: .88811183, g: 1, b: 0, a: 1}
   _pivot: 4
 --- !u!1 &1742665743
@@ -964,16 +973,17 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0626d3933ca0f461da23d3dde347e0a2, type: 1}
   m_Name: 
-  _text: "Unity SysFont\n\u2606\u3053\u3093\u306B\u3061\u306F\u4E16\u754C\u2661"
-  _appleFontName: 
-  _androidFontName: 
-  _fontSize: 40
-  _isBold: 1
-  _isItalic: 1
-  _alignment: 1
-  _isMultiLine: 1
-  _maxWidthPixels: 2048
-  _maxHeightPixels: 2048
+  _texture:
+    _text: "Unity SysFont\n\u2661\u3053\u3093\u306B\u3061\u306F\u4E16\u754C\u2661"
+    _appleFontName: 
+    _androidFontName: 
+    _fontSize: 40
+    _isBold: 1
+    _isItalic: 1
+    _alignment: 1
+    _isMultiLine: 1
+    _maxWidthPixels: 2048
+    _maxHeightPixels: 2048
   _fontColor: {r: .25874114, g: 1, b: 0, a: 1}
   _pivot: 4
 --- !u!1 &1991530966
@@ -1002,7 +1012,7 @@ Transform:
   m_GameObject: {fileID: 1991530966}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -99.2782593, y: -103.17128, z: 0}
-  m_LocalScale: {x: 61, y: 128, z: 1}
+  m_LocalScale: {x: 63, y: 128, z: 1}
   m_Children: []
   m_Father: {fileID: 1285649823}
 --- !u!23 &1991530968
@@ -1040,16 +1050,17 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0626d3933ca0f461da23d3dde347e0a2, type: 1}
   m_Name: 
-  _text: "Cropped center\n\u3053\u3093\u306B\u3061\u306F\u4E16\u754C"
-  _appleFontName: 
-  _androidFontName: 
-  _fontSize: 20
-  _isBold: 0
-  _isItalic: 0
-  _alignment: 1
-  _isMultiLine: 1
-  _maxWidthPixels: 64
-  _maxHeightPixels: 128
+  _texture:
+    _text: "Cropped center \u3053\u3093\u306B\u3061\u306F\u4E16\u754C"
+    _appleFontName: 
+    _androidFontName: 
+    _fontSize: 20
+    _isBold: 0
+    _isItalic: 0
+    _alignment: 1
+    _isMultiLine: 1
+    _maxWidthPixels: 64
+    _maxHeightPixels: 128
   _fontColor: {r: 1, g: .398601413, b: 0, a: 1}
   _pivot: 4
 --- !u!1 &2006342778
@@ -1116,16 +1127,17 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0626d3933ca0f461da23d3dde347e0a2, type: 1}
   m_Name: 
-  _text: '...........................................................'
-  _appleFontName: Arial
-  _androidFontName: Arial
-  _fontSize: 40
-  _isBold: 1
-  _isItalic: 0
-  _alignment: 0
-  _isMultiLine: 1
-  _maxWidthPixels: 2048
-  _maxHeightPixels: 2048
+  _texture:
+    _text: '...........................................................'
+    _appleFontName: Arial
+    _androidFontName: Arial
+    _fontSize: 40
+    _isBold: 1
+    _isItalic: 0
+    _alignment: 0
+    _isMultiLine: 1
+    _maxWidthPixels: 2048
+    _maxHeightPixels: 2048
   _fontColor: {r: .88811183, g: 1, b: 0, a: 1}
   _pivot: 4
 --- !u!1 &2115293278
@@ -1154,7 +1166,7 @@ Transform:
   m_GameObject: {fileID: 2115293278}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -282.983215, z: 0}
-  m_LocalScale: {x: 420, y: 144, z: 1}
+  m_LocalScale: {x: 540, y: 144, z: 1}
   m_Children: []
   m_Father: {fileID: 1285649823}
 --- !u!23 &2115293280
@@ -1192,15 +1204,16 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0626d3933ca0f461da23d3dde347e0a2, type: 1}
   m_Name: 
-  _text: "Unity SysFont\n\u3053\u3093\u306B\u3061\u306F\u4E16\u754C"
-  _appleFontName: 
-  _androidFontName: 
-  _fontSize: 60
-  _isBold: 0
-  _isItalic: 0
-  _alignment: 0
-  _isMultiLine: 1
-  _maxWidthPixels: 2048
-  _maxHeightPixels: 2048
+  _texture:
+    _text: "Unity SysFont\n\u2661\u3053\u3093\u306B\u3061\u306F\u4E16\u754C\u2661"
+    _appleFontName: 
+    _androidFontName: 
+    _fontSize: 60
+    _isBold: 0
+    _isItalic: 0
+    _alignment: 0
+    _isMultiLine: 1
+    _maxWidthPixels: 2048
+    _maxHeightPixels: 2048
   _fontColor: {r: 0, g: .916084051, b: 1, a: 1}
   _pivot: 4

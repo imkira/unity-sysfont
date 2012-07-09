@@ -24,54 +24,38 @@
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(SysFontText))]
-public class SysFontTextEditor : SysFontEditor
+[CustomEditor(typeof(UISysFontLabel))]
+public class UISysFontLabelEditor : UIWidgetInspector
 {
-  protected SysFontText _text;
+  protected UISysFontLabel _label;
 
-  public override void OnInspectorGUI()
+  protected override bool OnDrawProperties()
   {
-    _text = (SysFontText)target;
-
-    ISysFontTexturableEditor.DrawInspectorGUI(_text);
-
-    DrawInspectorGUI(_text);
+    _label = (UISysFontLabel)target;
+    ISysFontTexturableEditor.DrawInspectorGUI(_label);
+    return true;
   }
 
-  public static void DrawInspectorGUI(SysFontText text)
+  [MenuItem("NGUI/Create a SysFont Label")]
+  static public void AddLabel()
   {
-    GUILayout.BeginHorizontal();
+    GameObject go = NGUIMenu.SelectedRoot();
+
+    if (NGUIEditorTools.WillLosePrefab(go))
     {
-      LookLikeControls(70f);
+      NGUIEditorTools.RegisterUndo("Add a SysFont Label", go);
 
-      //
-      // FontColor property
-      //
-      Color fontColor;
-      fontColor = EditorGUILayout.ColorField("Font Color",
-          text.FontColor, GUILayout.Width(160f));
-      if (fontColor != text.FontColor)
-      {
-        RegisterUndo(text, "SysFont Color Change");
-        text.FontColor = fontColor;
-      }
+      GameObject child = new GameObject("UISysFontLabel");
+			child.layer = go.layer;
+      child.transform.parent = go.transform;
 
-      LookLikeControls(40f);
-
-      //
-      // Pivot property
-      //
-      SysFontText.PivotAlignment pivot;
-      pivot = (SysFontText.PivotAlignment)EditorGUILayout.EnumPopup("Pivot",
-          text.Pivot, GUILayout.Width(130f));
-      if (pivot != text.Pivot)
-      {
-        RegisterUndo(text, "SysFont Pivot Change");
-        text.Pivot = pivot;
-      }
-
-      LookLikeControls();
+      UISysFontLabel label = child.AddComponent<UISysFontLabel>();
+      label.MakePixelPerfect();
+      Vector3 pos = label.transform.localPosition;
+      pos.z = -1f;
+      label.transform.localPosition = pos;
+      label.Text = "Hello World";
+      Selection.activeGameObject = child;
     }
-    GUILayout.EndHorizontal();
   }
 }

@@ -256,4 +256,19 @@ public class SysFont : MonoBehaviour
   {
     _SysFontDequeueTexture(textureID);
   }
+
+  public static void SafeDestroy(UnityEngine.Object obj)
+  {
+    if (obj != null)
+    {
+      if (Application.isEditor)
+      {
+        DestroyImmediate(obj);
+      }
+      else
+      {
+        Destroy(obj);
+      }
+    }
+  }
 }

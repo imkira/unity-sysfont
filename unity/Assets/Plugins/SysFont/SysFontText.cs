@@ -25,8 +25,185 @@ using UnityEngine;
 
 [ExecuteInEditMode]
 [AddComponentMenu("SysFont/Text")]
-public class SysFontText : SysFontTexture
+public class SysFontText : MonoBehaviour, ISysFontTexturable
 {
+  [SerializeField]
+  protected SysFontTexture _texture = new SysFontTexture();
+
+  #region ISysFontTexturable properties
+  public string Text
+  {
+    get
+    {
+      return _texture.Text;
+    }
+    set
+    {
+      _texture.Text = value;
+    }
+  }
+
+  public string AppleFontName
+  {
+    get
+    {
+      return _texture.AppleFontName;
+    }
+    set
+    {
+      _texture.AppleFontName = value;
+    }
+  }
+
+  public string AndroidFontName 
+  {
+    get
+    {
+      return _texture.AndroidFontName;
+    }
+    set
+    {
+      _texture.AndroidFontName = value;
+    }
+  }
+
+  public string FontName
+  {
+    get
+    {
+      return _texture.FontName;
+    }
+    set
+    {
+      _texture.FontName = value;
+    }
+  }
+
+  public int FontSize
+  {
+    get
+    {
+      return _texture.FontSize;
+    }
+    set
+    {
+      _texture.FontSize = value;
+    }
+  }
+
+  public bool IsBold
+  {
+    get
+    {
+      return _texture.IsBold;
+    }
+    set
+    {
+      _texture.IsBold = value;
+    }
+  }
+
+  public bool IsItalic
+  {
+    get
+    {
+      return _texture.IsItalic;
+    }
+    set
+    {
+      _texture.IsItalic = value;
+    }
+  }
+
+  public SysFont.Alignment Alignment
+  {
+    get
+    {
+      return _texture.Alignment;
+    }
+    set
+    {
+      _texture.Alignment = value;
+    }
+  }
+
+  public bool IsMultiLine
+  {
+    get
+    {
+      return _texture.IsMultiLine;
+    }
+    set
+    {
+      _texture.IsMultiLine = value;
+    }
+  }
+
+  public int MaxWidthPixels
+  {
+    get
+    {
+      return _texture.MaxWidthPixels;
+    }
+    set
+    {
+      _texture.MaxWidthPixels = value;
+    }
+  }
+
+  public int MaxHeightPixels
+  {
+    get
+    {
+      return _texture.MaxHeightPixels;
+    }
+    set
+    {
+      _texture.MaxHeightPixels = value;
+    }
+  }
+
+  public int WidthPixels 
+  {
+    get
+    {
+      return _texture.WidthPixels;
+    }
+  }
+
+  public int HeightPixels 
+  {
+    get
+    {
+      return _texture.HeightPixels;
+    }
+  }
+
+  public int TextWidthPixels 
+  {
+    get
+    {
+      return _texture.TextWidthPixels;
+    }
+  }
+
+  public int TextHeightPixels 
+  {
+    get
+    {
+      return _texture.TextHeightPixels;
+    }
+  }
+
+  public Texture Texture
+  {
+    get
+    {
+      return _texture.Texture;
+    }
+  }
+  #endregion
+
   [SerializeField]
   protected Color _fontColor = Color.white;
 
@@ -91,27 +268,6 @@ public class SysFontText : SysFontTexture
 
   static protected Shader _shader = null;
 
-  protected virtual void Awake()
-  {
-    _transform = transform;
-  }
-
-  protected override void Update()
-  {
-    base.Update();
-
-    if ((_fontColor != _lastFontColor) && (_material != null))
-    {
-      _material.color = _fontColor;
-      _lastFontColor = _fontColor;
-    }
-
-    if (_lastPivot != _pivot)
-    {
-      UpdatePivot();
-    }
-  }
-
   protected void UpdateMesh()
   {
     if (_filter == null)
@@ -156,8 +312,9 @@ public class SysFontText : SysFontTexture
       _triangles = new int[6] { 0, 2, 1, 2, 3, 1 };
     }
 
-    Vector2 uv = new Vector2(_textWidthPixels / (float)_widthPixels,
-        _textHeightPixels / (float)_heightPixels);
+    Vector2 uv = new Vector2(_texture.TextWidthPixels /
+        (float)_texture.WidthPixels, _texture.TextHeightPixels /
+        (float)_texture.HeightPixels);
 
     _uv[0] = Vector2.zero; 
     _uv[1] = new Vector2(uv.x, 0f);
@@ -239,25 +396,47 @@ public class SysFontText : SysFontTexture
   public void UpdateScale()
   {
     Vector3 scale = _transform.localScale;
-    scale.x = (float)_textWidthPixels;
-    scale.y = (float)_textHeightPixels;
+    scale.x = (float)_texture.TextWidthPixels;
+    scale.y = (float)_texture.TextHeightPixels;
     _transform.localScale = scale;
   }
 
-  protected override void OnUpdated()
+  #region MonoBehaviour methods
+  protected virtual void Awake()
   {
-    base.OnUpdated();
-
-    UpdateMesh();
-
-    _material.mainTexture = Texture;
+    _transform = transform;
   }
 
-  protected override void OnDestroy()
+  protected virtual void Update()
   {
-    base.OnDestroy();
-    _Destroy(_mesh);
-    _Destroy(_createdMaterial);
+    if (_texture.NeedsRedraw)
+    {
+      _texture.Update();
+      UpdateMesh();
+      _material.mainTexture = Texture;
+    }
+
+    if ((_fontColor != _lastFontColor) && (_material != null))
+    {
+      _material.color = _fontColor;
+      _lastFontColor = _fontColor;
+    }
+
+    if (_lastPivot != _pivot)
+    {
+      UpdatePivot();
+    }
+  }
+
+  protected void OnDestroy()
+  {
+    if (_texture != null)
+    {
+      _texture.Destroy();
+      _texture = null;
+    }
+    SysFont.SafeDestroy(_mesh);
+    SysFont.SafeDestroy(_createdMaterial);
     _createdMaterial = null;
     _material = null;
     _vertices = null;
@@ -267,4 +446,5 @@ public class SysFontText : SysFontTexture
     _filter = null;
     _renderer = null;
   }
+  #endregion
 }

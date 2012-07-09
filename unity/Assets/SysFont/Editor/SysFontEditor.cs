@@ -24,54 +24,16 @@
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(SysFontText))]
-public class SysFontTextEditor : SysFontEditor
+public class SysFontEditor : Editor
 {
-  protected SysFontText _text;
-
-  public override void OnInspectorGUI()
+  public static void LookLikeControls(float labelWidth = 70f)
   {
-    _text = (SysFontText)target;
-
-    ISysFontTexturableEditor.DrawInspectorGUI(_text);
-
-    DrawInspectorGUI(_text);
+    EditorGUIUtility.LookLikeControls(labelWidth);
   }
 
-  public static void DrawInspectorGUI(SysFontText text)
+  public static void RegisterUndo(Object obj, string name)
   {
-    GUILayout.BeginHorizontal();
-    {
-      LookLikeControls(70f);
-
-      //
-      // FontColor property
-      //
-      Color fontColor;
-      fontColor = EditorGUILayout.ColorField("Font Color",
-          text.FontColor, GUILayout.Width(160f));
-      if (fontColor != text.FontColor)
-      {
-        RegisterUndo(text, "SysFont Color Change");
-        text.FontColor = fontColor;
-      }
-
-      LookLikeControls(40f);
-
-      //
-      // Pivot property
-      //
-      SysFontText.PivotAlignment pivot;
-      pivot = (SysFontText.PivotAlignment)EditorGUILayout.EnumPopup("Pivot",
-          text.Pivot, GUILayout.Width(130f));
-      if (pivot != text.Pivot)
-      {
-        RegisterUndo(text, "SysFont Pivot Change");
-        text.Pivot = pivot;
-      }
-
-      LookLikeControls();
-    }
-    GUILayout.EndHorizontal();
+    Undo.RegisterUndo(obj, name);
+    EditorUtility.SetDirty(obj);
   }
 }

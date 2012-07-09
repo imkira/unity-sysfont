@@ -24,31 +24,28 @@
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(SysFontTexture))]
-public class SysFontTextureEditor : Editor
+public class ISysFontTexturableEditor : SysFontEditor
 {
-  protected SysFontTexture _texture;
-
-  public override void OnInspectorGUI()
+  public static void DrawInspectorGUI(Object target)
   {
-    _texture = (SysFontTexture)target;
+    ISysFontTexturable texturable = (ISysFontTexturable)target;
 
     LookLikeControls();
 
     //
     // Text property
     //
-    string text = string.IsNullOrEmpty(_texture.Text) ? "" : _texture.Text;
+    string text = string.IsNullOrEmpty(texturable.Text) ? "" : texturable.Text;
 
     EditorGUILayout.LabelField("Text");
     GUI.skin.textArea.wordWrap = true;
     text = EditorGUILayout.TextArea(text, GUI.skin.textArea,
         GUILayout.Height(50f));
 
-    if (text.Equals(_texture.Text) == false)
+    if (text.Equals(texturable.Text) == false)
     {
-      RegisterUndo("SysFont Text Change");
-      _texture.Text = text;
+      RegisterUndo(target, "SysFont Text Change");
+      texturable.Text = text;
     }
 
     GUILayout.BeginHorizontal();
@@ -58,12 +55,12 @@ public class SysFontTextureEditor : Editor
       //
       // FontSize property
       //
-      int fontSize = EditorGUILayout.IntField(_texture.FontSize,
+      int fontSize = EditorGUILayout.IntField(texturable.FontSize,
           GUILayout.Width(30f));
-      if (fontSize != _texture.FontSize)
+      if (fontSize != texturable.FontSize)
       {
-        RegisterUndo("SysFont Font Size Change");
-        _texture.FontSize = fontSize;
+        RegisterUndo(target, "SysFont Font Size Change");
+        texturable.FontSize = fontSize;
       }
 
       LookLikeControls(30f);
@@ -72,24 +69,24 @@ public class SysFontTextureEditor : Editor
       // IsBold property
       //
       EditorGUILayout.PrefixLabel("Bold");
-      bool isBold = EditorGUILayout.Toggle(_texture.IsBold,
+      bool isBold = EditorGUILayout.Toggle(texturable.IsBold,
           GUILayout.Width(30f));
-      if (isBold != _texture.IsBold)
+      if (isBold != texturable.IsBold)
       {
-        RegisterUndo("SysFont Style Change");
-        _texture.IsBold = isBold;
+        RegisterUndo(target, "SysFont Style Change");
+        texturable.IsBold = isBold;
       }
 
       //
       // IsItalic property
       //
       EditorGUILayout.PrefixLabel("Italic");
-      bool isItalic = EditorGUILayout.Toggle(_texture.IsItalic,
+      bool isItalic = EditorGUILayout.Toggle(texturable.IsItalic,
           GUILayout.Width(30f));
-      if (isItalic != _texture.IsItalic)
+      if (isItalic != texturable.IsItalic)
       {
-        RegisterUndo("SysFont Style Change");
-        _texture.IsItalic = isItalic;
+        RegisterUndo(target, "SysFont Style Change");
+        texturable.IsItalic = isItalic;
       }
 
       LookLikeControls(60f);
@@ -99,11 +96,11 @@ public class SysFontTextureEditor : Editor
       //
       SysFont.Alignment alignment;
       alignment = (SysFont.Alignment)EditorGUILayout.EnumPopup("Alignment",
-          _texture.Alignment, GUILayout.Width(120f));
-      if (alignment != _texture.Alignment)
+          texturable.Alignment, GUILayout.Width(120f));
+      if (alignment != texturable.Alignment)
       {
-        RegisterUndo("SysFont Alignment Change");
-        _texture.Alignment = alignment;
+        RegisterUndo(target, "SysFont Alignment Change");
+        texturable.Alignment = alignment;
       }
     }
     GUILayout.EndHorizontal();
@@ -113,22 +110,22 @@ public class SysFontTextureEditor : Editor
     // AppleFontName property
     //
     string appleFontName = EditorGUILayout.TextField("iOS/MacOSX Font",
-        _texture.AppleFontName);
-    if (appleFontName != _texture.AppleFontName)
+        texturable.AppleFontName);
+    if (appleFontName != texturable.AppleFontName)
     {
-      RegisterUndo("SysFont Font Name Change");
-      _texture.AppleFontName = appleFontName;
+      RegisterUndo(target, "SysFont Font Name Change");
+      texturable.AppleFontName = appleFontName;
     }
 
     //
     // AndroidFontName property
     //
     string fontName = EditorGUILayout.TextField("Android Font",
-        _texture.AndroidFontName);
-    if (fontName != _texture.AndroidFontName)
+        texturable.AndroidFontName);
+    if (fontName != texturable.AndroidFontName)
     {
-      RegisterUndo("SysFont Font Name Change");
-      _texture.AndroidFontName = fontName;
+      RegisterUndo(target, "SysFont Font Name Change");
+      texturable.AndroidFontName = fontName;
     }
     LookLikeControls();
 
@@ -140,11 +137,11 @@ public class SysFontTextureEditor : Editor
       // IsMultiLine property
       //
       bool isMultiLine = EditorGUILayout.Toggle("Multi Line",
-          _texture.IsMultiLine, GUILayout.Width(80f));
-      if (isMultiLine != _texture.IsMultiLine)
+          texturable.IsMultiLine, GUILayout.Width(80f));
+      if (isMultiLine != texturable.IsMultiLine)
       {
-        RegisterUndo("SysFont Is Multi Line Change");
-        _texture.IsMultiLine = isMultiLine;
+        RegisterUndo(target, "SysFont Is Multi Line Change");
+        texturable.IsMultiLine = isMultiLine;
       }
 
       LookLikeControls(65f);
@@ -153,37 +150,26 @@ public class SysFontTextureEditor : Editor
       // MaxWidthPixels property
       //
       int maxWidthPixels = EditorGUILayout.IntField("Max Width",
-          _texture.MaxWidthPixels, GUILayout.Width(110f));
-      if (maxWidthPixels != _texture.MaxWidthPixels)
+          texturable.MaxWidthPixels, GUILayout.Width(110f));
+      if (maxWidthPixels != texturable.MaxWidthPixels)
       {
-        RegisterUndo("SysFont Max Width Pixels Change");
-        _texture.MaxWidthPixels = maxWidthPixels;
+        RegisterUndo(target, "SysFont Max Width Pixels Change");
+        texturable.MaxWidthPixels = maxWidthPixels;
       }
 
       //
       // MaxHeightPixels property
       //
       int maxHeightPixels = EditorGUILayout.IntField("Max Height",
-          _texture.MaxHeightPixels, GUILayout.Width(110f));
-      if (maxHeightPixels != _texture.MaxHeightPixels)
+          texturable.MaxHeightPixels, GUILayout.Width(110f));
+      if (maxHeightPixels != texturable.MaxHeightPixels)
       {
-        RegisterUndo("SysFont Max Height Pixels Change");
-        _texture.MaxHeightPixels = maxHeightPixels;
+        RegisterUndo(target, "SysFont Max Height Pixels Change");
+        texturable.MaxHeightPixels = maxHeightPixels;
       }
 
       LookLikeControls();
     }
     GUILayout.EndHorizontal();
-  }
-
-  protected void LookLikeControls(float labelWidth = 70f)
-  {
-    EditorGUIUtility.LookLikeControls(labelWidth);
-  }
-
-  protected virtual void RegisterUndo(string name)
-  {
-    Undo.RegisterUndo(_texture, name);
-    EditorUtility.SetDirty(_texture);
   }
 }

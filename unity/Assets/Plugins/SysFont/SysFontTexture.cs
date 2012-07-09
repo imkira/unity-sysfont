@@ -23,11 +23,9 @@
 
 using UnityEngine;
 using System;
-using System.Runtime.InteropServices;
 
-[ExecuteInEditMode]
-[AddComponentMenu("SysFont/Texture")]
-public class SysFontTexture : MonoBehaviour
+[System.Serializable]
+public class SysFontTexture : ISysFontTexturable
 {
   [SerializeField]
   protected string _text = "";
@@ -289,7 +287,7 @@ public class SysFontTexture : MonoBehaviour
     }
   }
 
-  protected bool NeedsRedraw 
+  public bool NeedsRedraw
   {
     get
     {
@@ -305,29 +303,7 @@ public class SysFontTexture : MonoBehaviour
     }
   }
 
-  protected virtual void OnDestroy()
-  {
-    if (_texture != null)
-    {
-      //Debug.Log("Texture2D destruction: " + _texture.GetNativeTextureID());
-      if (_texture != null)
-      {
-        SysFont.DequeueTexture(_texture.GetNativeTextureID());
-        _Destroy(_texture);
-        _texture = null;
-      }
-    }
-  }
-
-  protected virtual void Update()
-  {
-    if (NeedsRedraw)
-    {
-      ForceUpdate();
-    }
-  }
-
-  protected void ForceUpdate()
+  public void Update()
   {
     if (_texture == null)
     {
@@ -360,25 +336,18 @@ public class SysFontTexture : MonoBehaviour
     _lastIsMultiLine = _isMultiLine;
     _lastMaxWidthPixels = _maxWidthPixels;
     _lastMaxHeightPixels = _maxHeightPixels;
-
-    OnUpdated();
   }
 
-  protected virtual void OnUpdated()
+  public void Destroy()
   {
-  }
-
-  protected void _Destroy(UnityEngine.Object obj)
-  {
-    if (obj != null)
+    if (_texture != null)
     {
-      if (Application.isEditor)
+      //Debug.Log("Texture2D destruction: " + _texture.GetNativeTextureID());
+      if (_texture != null)
       {
-        DestroyImmediate(obj);
-      }
-      else
-      {
-        Destroy(obj);
+        SysFont.DequeueTexture(_texture.GetNativeTextureID());
+        SysFont.SafeDestroy(_texture);
+        _texture = null;
       }
     }
   }
