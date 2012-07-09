@@ -13,6 +13,8 @@ dynamic text using the fonts available on the mobile device/computer.
 * Optimized: Alpha-only textures and dynamic texture size adjustment.
 * Programmable: the same fields available in the editor are exposed as
   properties that you can change programatically.
+* Third-party: integrates well with NGUI scroll lists and other widgets that
+  require clipping.
 
 ## Requirements
 
@@ -20,13 +22,9 @@ dynamic text using the fonts available on the mobile device/computer.
 
 ## Download & Installation
 
-First, download
-[unity-sysfont plugin package](https://github.com/downloads/imkira/unity-sysfont/unity-sysfont.unitypackage)
-and double click it to import all the necessary files into your Unity project.
-
-You can also download the
-[Demo package](https://github.com/downloads/imkira/unity-sysfont/unity-sysfont-demo.unitypackage)
-and double click it to import it to your project.
+* [unity-sysfont plugin](https://github.com/downloads/imkira/unity-sysfont/unity-sysfont.unitypackage)
+* [standalone demo](https://github.com/downloads/imkira/unity-sysfont/unity-sysfont-demo.unitypackage)
+* [NGUI compatibility package](https://github.com/downloads/imkira/unity-sysfont/unity-sysfont-ngui.unitypackage) if you use unity-sysfont with NGUI!
 
 ## Demonstration
 
@@ -79,6 +77,10 @@ Note 2: On MacOSX, if both bold and italic are checked, italic will be ignored.
 
 Note 3: On Android, you can only use this if the font supports it (if it does
 not, it will be ignored).
+
+### Alignment
+
+Choose the desired text alignment: left, center, or right.
 
 ### iOS/MacOSX/Editor Font
 
@@ -133,14 +135,25 @@ Choose the color you want for your text.
 
 Choose the pivot point for the mesh that is textured with your dynamic text.
 
-Note: For multiline text, this is not the same thing as text alignment!
-
 ## Pixel Perfect Text
 
 For displaying pixel perfect text, you can freely use and modify the script
 [PixelPerfectResizer.cs](http://github.com/imkira/unity-sysfont/blob/master/unity/Assets/SysFont/Demo/PixelPerfectResizer.cs)
 and use it like in the
 [demo](https://github.com/downloads/imkira/unity-sysfont/unity-sysfont-demo.unitypackage).
+
+## NGUI Compatibility
+
+If you wish to use unity-sysfont text with clipping support, you can download
+the
+[NGUI compatibility package](https://github.com/downloads/imkira/unity-sysfont/unity-sysfont-ngui.unitypackage).
+
+After downloading the package, import it to your project.
+To add a UISysFontLabel widget to your scene access the menu
+```NGUI -> Create a SysFont Label```.
+
+Here is a screenshot of unity-sysfont-ngui.
+![NGUI](https://github.com/downloads/imkira/unity-sysfont/unity-sysfont_ngui-clipping.png)
 
 ## Known Problems
 
