@@ -153,7 +153,7 @@ To add a UISysFontLabel widget to your scene access the menu
 ```NGUI -> Create a SysFont Label```.
 
 Here is a screenshot of unity-sysfont-ngui.
-![NGUI](https://github.com/downloads/imkira/unity-sysfont/unity-sysfont_ngui-clipping.png)
+![NGUI](https://github.com/downloads/imkira/unity-sysfont/unity-sysfont_ngui-clipping.jpg)
 
 ## Known Problems
 
