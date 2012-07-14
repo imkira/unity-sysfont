@@ -32,6 +32,7 @@ extern EAGLContext* _context;
 
 #elif TARGET_OS_MAC
 #import <ApplicationServices/ApplicationServices.h>
+#include <OpenGL/gl.h>
 #else
 #error Unknown platform
 #endif
@@ -306,30 +307,42 @@ maxHeightPixels:(int)_maxHeightPixels textureID:(int)_textureID
 #elif TARGET_OS_MAC
 - (void)render
 {
-  NSSize textureSize = NSMakeSize(textureWidth, textureHeight);
-  NSImage *image = [[NSImage alloc] initWithSize:textureSize];
-  NSRect drawRect = NSMakeRect(0.f, 0.f, textWidth, textHeight);
+  NSBitmapImageRep *bitmap = [[NSBitmapImageRep alloc]
+    initWithBitmapDataPlanes:NULL pixelsWide:textureWidth
+    pixelsHigh:textureHeight bitsPerSample:8 samplesPerPixel:1 hasAlpha:NO
+    isPlanar:NO colorSpaceName:NSCalibratedWhiteColorSpace bitmapFormat:0
+    bytesPerRow:textureWidth bitsPerPixel:8];
 
-  [image lockFocus];
-  [image setBackgroundColor:[NSColor clearColor]];
+  if (bitmap == nil)
+  {
+    return;
+  }
+
+  NSGraphicsContext *context = [NSGraphicsContext
+    graphicsContextWithBitmapImageRep:bitmap];
+  [NSGraphicsContext saveGraphicsState];
+  [NSGraphicsContext setCurrentContext:context];
 
   NSAffineTransform *transform = [NSAffineTransform transform];
   [transform translateXBy:0.f yBy:textureHeight];
   [transform scaleXBy:1.f yBy:-1.f];
   [transform concat];
 
+  NSRect textureRect = NSMakeRect(0.f, 0.f, textureWidth, textureHeight);
+  NSRect drawRect = NSMakeRect(0.f, 0.f, textWidth, textHeight);
+
+  [[NSColor clearColor] setFill];
+  NSRectFill(textureRect);
+
+  [[NSColor whiteColor] set];
   [attributedString drawWithRect:drawRect
     options:NSStringDrawingUsesLineFragmentOrigin];
 
-  NSBitmapImageRep *bitmap = [[NSBitmapImageRep alloc]
-    initWithFocusedViewRect:(NSRect){{0.f, 0.f}, textureSize}];
+  [NSGraphicsContext restoreGraphicsState];
 
-  [image unlockFocus];
-
-  [self bindTextureWithFormat:GL_RGBA bitmapData:[bitmap bitmapData]];
+  [self bindTextureWithFormat:GL_ALPHA bitmapData:[bitmap bitmapData]];
 
   [bitmap release];
-  [image release];
 }
 #endif
 
