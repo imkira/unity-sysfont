@@ -55,7 +55,7 @@ public class UISysFontLabel : UIWidget, ISysFontTexturable
     }
   }
 
-  public string AndroidFontName 
+  public string AndroidFontName
   {
     get
     {
@@ -230,18 +230,23 @@ public class UISysFontLabel : UIWidget, ISysFontTexturable
     return false;
   }
 
-	override public void MakePixelPerfect()
-	{
+  override public void MakePixelPerfect()
+  {
     Vector3 scale = cachedTransform.localScale;
     scale.x = _texture.TextWidthPixels;
     scale.y = _texture.TextHeightPixels;
     cachedTransform.localScale = scale;
 
-		base.MakePixelPerfect();
-	}
+    base.MakePixelPerfect();
+  }
 
-	override public void OnFill(BetterList<Vector3> verts,
+#if (UNITY_3_4 || UNITY_3_5_0 || UNITY_3_5_1 || UNITY_3_5_2 || UNITY_3_5_3 || UNITY_3_5_4)
+  override public void OnFill(BetterList<Vector3> verts,
       BetterList<Vector2> uvs, BetterList<Color> cols)
+#else
+  override public void OnFill(BetterList<Vector3> verts,
+      BetterList<Vector2> uvs, BetterList<Color32> cols)
+#endif
   {
     if (_vertices == null)
     {
