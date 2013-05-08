@@ -1,3 +1,6 @@
+This page is for Unity 4.x. If you are looking for Unity 3.x please
+[check here](https://github.com/imkira/unity-sysfont).
+
 unity-sysfont
 =============
 
@@ -18,25 +21,26 @@ dynamic text using the fonts available on the mobile device/computer.
 
 ## Requirements
 
-* Unity 3.5 Pro.
+* Unity 4.x Pro.
 
 ## Download & Installation
 
-* [unity-sysfont plugin](https://github.com/downloads/imkira/unity-sysfont/unity-sysfont.unitypackage)
-* [standalone demo](https://github.com/downloads/imkira/unity-sysfont/unity-sysfont-demo.unitypackage)
-* [NGUI compatibility package](https://github.com/downloads/imkira/unity-sysfont/unity-sysfont-ngui.unitypackage) if you use unity-sysfont with NGUI!
+The following files are for Unity 4.x. If you are looking for Unity 3.x please
+[check here](https://github.com/imkira/unity-sysfont).
+
+* [unity-sysfont plugin](http://dl.bintray.com/content/imkira/unity-sysfont/unity4x-core/unity-sysfont-1_0_3.unitypackage?direct)
+* [standalone demo](http://dl.bintray.com/content/imkira/unity-sysfont/unity4x-demo/unity-sysfont-demo-1_0_1.unitypackage?direct)
+* [NGUI compatibility package](http://dl.bintray.com/content/imkira/unity-sysfont/unity4x-ngui/unity-sysfont-ngui-1_0_3.unitypackage?direct)
 
 ## Demonstration
 
 Here is a screenshot of unity-sysfont demo running on Unity Editor.
-![Editor](https://github.com/downloads/imkira/unity-sysfont/editor.png)
+![Editor](http://dl.bintray.com/content/imkira/unity-sysfont/unity3x-core/screenshots/editor-1_0_2.png?direct)
 
-And here is a picture of the
-[demo](https://github.com/downloads/imkira/unity-sysfont/unity-sysfont-demo.unitypackage)
-running on and Android and an iPhone.
-![Android and iPhone](https://github.com/downloads/imkira/unity-sysfont/android_iphone.png)
+And here is a picture of the demo (find link above) running on and Android and an iPhone.
+![Android and iPhone](http://dl.bintray.com/content/imkira/unity-sysfont/unity3x-core/screenshots/android_iphone-1_0_2.png?direct)
 
-## Creating dynamic text 
+## Creating dynamic text
 
 * Make sure your camera is will configured (normally you will want an
   orthographic camera).
@@ -139,21 +143,19 @@ Choose the pivot point for the mesh that is textured with your dynamic text.
 
 For displaying pixel perfect text, you can freely use and modify the script
 [PixelPerfectResizer.cs](http://github.com/imkira/unity-sysfont/blob/master/unity/Assets/SysFont/Demo/PixelPerfectResizer.cs)
-and use it like in the
-[demo](https://github.com/downloads/imkira/unity-sysfont/unity-sysfont-demo.unitypackage).
+and use it like in the demo (find link above).
 
 ## NGUI Compatibility
 
 If you wish to use unity-sysfont text with clipping support, you can download
-the
-[NGUI compatibility package](https://github.com/downloads/imkira/unity-sysfont/unity-sysfont-ngui.unitypackage).
+the NGUI compatibility package (find link above).
 
 After downloading the package, import it to your project.
 To add a UISysFontLabel widget to your scene access the menu
 ```NGUI -> Create a SysFont Label```.
 
 Here is a screenshot of unity-sysfont-ngui.
-![NGUI](https://github.com/downloads/imkira/unity-sysfont/unity-sysfont_ngui-clipping.jpg)
+![NGUI](http://dl.bintray.com/content/imkira/unity-sysfont/unity3x-core/screenshots/unity-sysfont_ngui-clipping-1_0_2.jpg?direct)
 
 ## Known Problems
 
