@@ -29,7 +29,7 @@ public class UISysFontLabelEditor : UIWidgetInspector
 {
   protected UISysFontLabel _label;
 
-  protected override bool OnDrawProperties()
+  protected override bool DrawProperties()
   {
     _label = (UISysFontLabel)target;
     ISysFontTexturableEditor.DrawInspectorGUI(_label);
