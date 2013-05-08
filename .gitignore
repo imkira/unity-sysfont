@@ -4,11 +4,15 @@
 # VIM
 *.swp
 
+# packages
+packages
+
 # Android
 android/bin/*
 android/libs/*
 android/gen
 android/proguard.cfg
+android/proguard-project.txt
 android/local.properties
 
 # xcode
@@ -30,8 +34,10 @@ unity/*.pidb
 unity/*.userprefs
 unity/Temp
 
-unity/Assets/Plugins/Android/*.jar
-unity/Assets/Plugins/Android/*.jar.meta
+unity/Assets/NGUI
+unity/Assets/NGUI.meta
+unity/Assets/Plugins/Android/SysFont.jar
+unity/Assets/Plugins/Android/SysFont.jar.meta
 unity/Assets/Plugins/Android.meta
 unity/Assets/Plugins/SysFont.bundle/*
 unity/Assets/Plugins/SysFont.bundle.meta
