@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2012 Mario Freitas (imkira@gmail.com)
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
  * "Software"), to deal in the Software without restriction, including
@@ -8,10 +8,10 @@
  * distribute, sublicense, and/or sell copies of the Software, and to
  * permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -28,7 +28,9 @@
 #import <OpenGLES/EAGL.h>
 #import <OpenGLES/ES1/gl.h>
 
-extern EAGLContext* _context;
+#import "DisplayManager.h"
+
+static DisplayConnection *_mainDisplay = nil;
 
 #elif TARGET_OS_MAC
 #import <ApplicationServices/ApplicationServices.h>
@@ -152,7 +154,7 @@ maxHeightPixels:(int)_maxHeightPixels textureID:(int)_textureID
   {
     font = [UIFont fontWithName:fontName size:fontSize];
   }
-  
+
   if (font == nil)
   {
     if (isBold == YES)
@@ -232,7 +234,7 @@ maxHeightPixels:(int)_maxHeightPixels textureID:(int)_textureID
     [NSColor clearColor], NSBackgroundColorAttributeName,
     parStyle, NSParagraphStyleAttributeName, nil];
 
-  attributedString = [[NSAttributedString alloc] 
+  attributedString = [[NSAttributedString alloc]
     initWithString:text attributes:attributes];
 
   boundsSize = NSSizeToCGSize([attributedString
@@ -301,7 +303,7 @@ maxHeightPixels:(int)_maxHeightPixels textureID:(int)_textureID
 
   [self bindTextureWithFormat:GL_ALPHA bitmapData:bitmapData];
 
-  CGContextRelease(context); 
+  CGContextRelease(context);
   free(bitmapData);
 }
 #elif TARGET_OS_MAC
@@ -371,7 +373,7 @@ maxHeightPixels:(int)_maxHeightPixels textureID:(int)_textureID
 - (void)dequeueUpdate:(NSNumber *)textureID;
 @end
 
-@implementation UnitySysFontTextureManager 
+@implementation UnitySysFontTextureManager
 static UnitySysFontTextureManager *sharedInstance;
 
 + (void)initialize
@@ -437,11 +439,39 @@ static UnitySysFontTextureManager *sharedInstance;
   if ([updateQueue count] > (NSUInteger)0)
   {
 #if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
-    EAGLContext *oldContext = [EAGLContext currentContext];
-    // change to Unity's default OpenGL context
-    if (oldContext != _context)
+    EAGLContext *context = nil;
+
+    if (_mainDisplay == nil)
     {
-      [EAGLContext setCurrentContext:_context];
+      _mainDisplay = [[DisplayManager Instance] mainDisplay];
+    }
+
+    if (_mainDisplay != nil)
+    {
+      context = _mainDisplay->surface.context;
+    }
+
+    if (context == nil)
+    {
+      for (NSNumber *textureID in [updateQueue allKeys])
+      {
+        UnitySysFontTextureUpdate *update = [updateQueue objectForKey:textureID];
+        if ([update isReady])
+        {
+          [updateQueue removeObjectForKey:textureID];
+          [update release];
+        }
+      }
+
+      return;
+    }
+
+    EAGLContext *oldContext = [EAGLContext currentContext];
+
+    // change to Unity's default OpenGL context
+    if (oldContext != context)
+    {
+      [EAGLContext setCurrentContext:context];
     }
 #endif
     for (NSNumber *textureID in [updateQueue allKeys])
@@ -456,7 +486,7 @@ static UnitySysFontTextureManager *sharedInstance;
     }
 #if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
     // revert to non-default OpenGL context?
-    if (oldContext != _context)
+    if (oldContext != context)
     {
       [EAGLContext setCurrentContext:oldContext];
     }
