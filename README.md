@@ -30,7 +30,7 @@ The following files are for Unity 4.x. If you are looking for Unity 3.x please
 
 * [unity-sysfont plugin](http://dl.bintray.com/content/imkira/unity-sysfont/unity4x-core/unity-sysfont-1_0_3.unitypackage?direct)
 * [standalone demo](http://dl.bintray.com/content/imkira/unity-sysfont/unity4x-demo/unity-sysfont-demo-1_0_1.unitypackage?direct)
-* [NGUI compatibility package](http://dl.bintray.com/content/imkira/unity-sysfont/unity4x-ngui/unity-sysfont-ngui-1_0_3.unitypackage?direct)
+* [NGUI compatibility package](http://dl.bintray.com/content/imkira/unity-sysfont/unity4x-ngui/unity-sysfont-ngui-1_0_4.unitypackage?direct)
 
 ## Demonstration
 
