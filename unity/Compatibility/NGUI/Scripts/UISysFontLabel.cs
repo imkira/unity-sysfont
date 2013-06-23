@@ -163,7 +163,7 @@ public class UISysFontLabel : UIWidget, ISysFontTexturable
     }
   }
 
-  public int WidthPixels 
+  public int WidthPixels
   {
     get
     {
@@ -171,7 +171,7 @@ public class UISysFontLabel : UIWidget, ISysFontTexturable
     }
   }
 
-  public int HeightPixels 
+  public int HeightPixels
   {
     get
     {
@@ -179,7 +179,7 @@ public class UISysFontLabel : UIWidget, ISysFontTexturable
     }
   }
 
-  public int TextWidthPixels 
+  public int TextWidthPixels
   {
     get
     {
@@ -187,7 +187,7 @@ public class UISysFontLabel : UIWidget, ISysFontTexturable
     }
   }
 
-  public int TextHeightPixels 
+  public int TextHeightPixels
   {
     get
     {
@@ -217,17 +217,17 @@ public class UISysFontLabel : UIWidget, ISysFontTexturable
     }
   }
 
-  public override bool OnUpdate()
+  public override void Update()
   {
+    base.Update();
+
     if (_texture.NeedsRedraw)
     {
       _texture.Update();
       _uv = new Vector2(_texture.TextWidthPixels /
           (float)_texture.WidthPixels, _texture.TextHeightPixels /
           (float)_texture.HeightPixels);
-      return true;
     }
-    return false;
   }
 
   override public void MakePixelPerfect()
