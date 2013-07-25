@@ -195,7 +195,7 @@ public class UISysFontLabel : UIWidget, ISysFontTexturable
     }
   }
 
-  public Texture Texture
+  public Texture2D Texture
   {
     get
     {
@@ -223,7 +223,11 @@ public class UISysFontLabel : UIWidget, ISysFontTexturable
 
     if (_texture.NeedsRedraw)
     {
-      _texture.Update();
+      if (_texture.Update() == false)
+      {
+        return;
+      }
+
       _uv = new Vector2(_texture.TextWidthPixels /
           (float)_texture.WidthPixels, _texture.TextHeightPixels /
           (float)_texture.HeightPixels);
