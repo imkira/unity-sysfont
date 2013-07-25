@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2012 Mario Freitas (imkira@gmail.com)
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
  * "Software"), to deal in the Software without restriction, including
@@ -8,10 +8,10 @@
  * distribute, sublicense, and/or sell copies of the Software, and to
  * permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -55,7 +55,7 @@ public class SysFontText : MonoBehaviour, ISysFontTexturable
     }
   }
 
-  public string AndroidFontName 
+  public string AndroidFontName
   {
     get
     {
@@ -163,7 +163,7 @@ public class SysFontText : MonoBehaviour, ISysFontTexturable
     }
   }
 
-  public int WidthPixels 
+  public int WidthPixels
   {
     get
     {
@@ -171,7 +171,7 @@ public class SysFontText : MonoBehaviour, ISysFontTexturable
     }
   }
 
-  public int HeightPixels 
+  public int HeightPixels
   {
     get
     {
@@ -179,7 +179,7 @@ public class SysFontText : MonoBehaviour, ISysFontTexturable
     }
   }
 
-  public int TextWidthPixels 
+  public int TextWidthPixels
   {
     get
     {
@@ -187,7 +187,7 @@ public class SysFontText : MonoBehaviour, ISysFontTexturable
     }
   }
 
-  public int TextHeightPixels 
+  public int TextHeightPixels
   {
     get
     {
@@ -195,7 +195,7 @@ public class SysFontText : MonoBehaviour, ISysFontTexturable
     }
   }
 
-  public Texture Texture
+  public Texture2D Texture
   {
     get
     {
@@ -316,7 +316,7 @@ public class SysFontText : MonoBehaviour, ISysFontTexturable
         (float)_texture.WidthPixels, _texture.TextHeightPixels /
         (float)_texture.HeightPixels);
 
-    _uv[0] = Vector2.zero; 
+    _uv[0] = Vector2.zero;
     _uv[1] = new Vector2(uv.x, 0f);
     _uv[2] = new Vector2(0f, uv.y);
     _uv[3] = uv;
@@ -411,9 +411,17 @@ public class SysFontText : MonoBehaviour, ISysFontTexturable
   {
     if (_texture.NeedsRedraw)
     {
-      _texture.Update();
+      if (_texture.Update() == false)
+      {
+        return;
+      }
       UpdateMesh();
       _material.mainTexture = Texture;
+    }
+
+    if (_texture.IsUpdated == false)
+    {
+      return;
     }
 
     if ((_fontColor != _lastFontColor) && (_material != null))

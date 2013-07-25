@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2012 Mario Freitas (imkira@gmail.com)
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
  * "Software"), to deal in the Software without restriction, including
@@ -8,10 +8,10 @@
  * distribute, sublicense, and/or sell copies of the Software, and to
  * permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -88,7 +88,7 @@ public class SysFontTexture : ISysFontTexturable
     }
   }
 
-  public string AndroidFontName 
+  public string AndroidFontName
   {
     get
     {
@@ -243,7 +243,7 @@ public class SysFontTexture : ISysFontTexturable
   }
 
   protected int _widthPixels = 1;
-  public int WidthPixels 
+  public int WidthPixels
   {
     get
     {
@@ -252,7 +252,7 @@ public class SysFontTexture : ISysFontTexturable
   }
 
   protected int _heightPixels = 1;
-  public int HeightPixels 
+  public int HeightPixels
   {
     get
     {
@@ -261,7 +261,7 @@ public class SysFontTexture : ISysFontTexturable
   }
 
   protected int _textWidthPixels;
-  public int TextWidthPixels 
+  public int TextWidthPixels
   {
     get
     {
@@ -270,7 +270,7 @@ public class SysFontTexture : ISysFontTexturable
   }
 
   protected int _textHeightPixels;
-  public int TextHeightPixels 
+  public int TextHeightPixels
   {
     get
     {
@@ -278,8 +278,17 @@ public class SysFontTexture : ISysFontTexturable
     }
   }
 
-  protected Texture _texture = null;
-  public Texture Texture
+  protected int _textureId = 0;
+  public bool IsUpdated
+  {
+    get
+    {
+      return ((_texture != null) && (_textureId != 0));
+    }
+  }
+
+  protected Texture2D _texture = null;
+  public Texture2D Texture
   {
     get
     {
@@ -303,7 +312,7 @@ public class SysFontTexture : ISysFontTexturable
     }
   }
 
-  public void Update()
+  public bool Update()
   {
     if (_texture == null)
     {
@@ -311,21 +320,33 @@ public class SysFontTexture : ISysFontTexturable
       _texture.hideFlags = HideFlags.HideInInspector | HideFlags.DontSave;
       _texture.filterMode = FilterMode.Point;
       _texture.wrapMode = TextureWrapMode.Clamp;
-      //Debug.Log("Texture2D creation: " + _texture.GetNativeTextureID());
+      _texture.Apply(false, true);
+      _textureId = 0;
     }
 
-    int textureID = _texture.GetNativeTextureID();
+    if (_textureId == 0)
+    {
+      _textureId = _texture.GetNativeTextureID();
+
+      if (_textureId == 0)
+      {
+        // texture not ready, it may happen on multi-threaded rendering
+        return false;
+      }
+
+      //Debug.Log("Texture2D creation: " + _textureId);
+    }
 
     SysFont.QueueTexture(_text, FontName, _fontSize, _isBold,
         _isItalic, _alignment, _isMultiLine, _maxWidthPixels,
-        _maxHeightPixels, textureID);
+        _maxHeightPixels, _textureId);
 
-    _textWidthPixels = SysFont.GetTextWidth(textureID);
-    _textHeightPixels = SysFont.GetTextHeight(textureID);
-    _widthPixels = SysFont.GetTextureWidth(textureID);
-    _heightPixels = SysFont.GetTextureHeight(textureID);
+    _textWidthPixels = SysFont.GetTextWidth(_textureId);
+    _textHeightPixels = SysFont.GetTextHeight(_textureId);
+    _widthPixels = SysFont.GetTextureWidth(_textureId);
+    _heightPixels = SysFont.GetTextureHeight(_textureId);
 
-    SysFont.UpdateQueuedTexture(textureID);
+    SysFont.UpdateQueuedTexture(_textureId);
 
     _lastText = _text;
     _lastFontName = FontName;
@@ -336,19 +357,21 @@ public class SysFontTexture : ISysFontTexturable
     _lastIsMultiLine = _isMultiLine;
     _lastMaxWidthPixels = _maxWidthPixels;
     _lastMaxHeightPixels = _maxHeightPixels;
+    return true;
   }
 
   public void Destroy()
   {
     if (_texture != null)
     {
-      //Debug.Log("Texture2D destruction: " + _texture.GetNativeTextureID());
-      if (_texture != null)
+      if (_textureId != 0)
       {
-        SysFont.DequeueTexture(_texture.GetNativeTextureID());
-        SysFont.SafeDestroy(_texture);
-        _texture = null;
+        //Debug.Log("Texture2D destruction: " + _textureId);
+        SysFont.DequeueTexture(_textureId);
+        _textureId = 0;
       }
+      SysFont.SafeDestroy(_texture);
+      _texture = null;
     }
   }
 }
