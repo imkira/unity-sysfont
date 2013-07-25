@@ -28,9 +28,14 @@ dynamic text using the fonts available on the mobile device/computer.
 The following files are for Unity 3.x. If you are looking for Unity 4.x please
 [check here](https://github.com/imkira/unity-sysfont/tree/unity4x).
 
-* [unity-sysfont plugin](http://dl.bintray.com/content/imkira/unity-sysfont/unity3x-core/unity-sysfont-1_0_2.unitypackage?direct)
-* [standalone demo](http://dl.bintray.com/content/imkira/unity-sysfont/unity3x-demo/unity-sysfont-demo-1_0_1.unitypackage?direct)
-* [NGUI compatibility package](http://dl.bintray.com/content/imkira/unity-sysfont/unity3x-ngui/unity-sysfont-ngui-1_0_4.unitypackage?direct)
+* [unity-sysfont plugin (v1.0.3)](http://dl.bintray.com/content/imkira/unity-sysfont/unity3x-core/unity-sysfont-1_0_3.unitypackage?direct)
+* [NGUI compatibility package (v1.0.5)](http://dl.bintray.com/content/imkira/unity-sysfont/unity3x-ngui/unity-sysfont-ngui-1_0_5.unitypackage?direct)
+* [standalone demo (v1.0.1)](http://dl.bintray.com/content/imkira/unity-sysfont/unity3x-demo/unity-sysfont-demo-1_0_1.unitypackage?direct)
+
+## Change Log
+
+The [change log](https://github.com/imkira/unity-sysfont/blob/master/CHANGES.md)
+contains the list of changes and latest version information of each package.
 
 ## Demonstration
 
