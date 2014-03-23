@@ -202,6 +202,16 @@ public class SysFontText : MonoBehaviour, ISysFontTexturable
       return _texture.Texture;
     }
   }
+
+  public float ScaleSize
+   {
+      get{
+         return _texture.ScaleSize;
+      }
+      set{
+         _texture.ScaleSize = value;
+      }
+   }
   #endregion
 
   [SerializeField]
@@ -396,8 +406,8 @@ public class SysFontText : MonoBehaviour, ISysFontTexturable
   public void UpdateScale()
   {
     Vector3 scale = _transform.localScale;
-    scale.x = (float)_texture.TextWidthPixels;
-    scale.y = (float)_texture.TextHeightPixels;
+      scale.x = (float)_texture.TextWidthPixels * _texture.ScaleSize;
+      scale.y = (float)_texture.TextHeightPixels * _texture.ScaleSize;
     _transform.localScale = scale;
   }
 
