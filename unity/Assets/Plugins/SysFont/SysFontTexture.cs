@@ -57,6 +57,9 @@ public class SysFontTexture : ISysFontTexturable
   [SerializeField]
   protected int _maxHeightPixels = 2048;
 
+  [SerializeField]
+  protected float _scaleSize = 1f;
+
   protected string _lastText;
   public string Text
   {
@@ -242,6 +245,22 @@ public class SysFontTexture : ISysFontTexturable
     }
   }
 
+   protected float _lastScaleSize;
+   public float ScaleSize
+   {
+      get
+      {
+         return _scaleSize;
+      }
+      set
+      {
+         if(_scaleSize != value)
+         {
+            _scaleSize = value;
+         }
+      }
+   }
+
   protected int _widthPixels = 1;
   public int WidthPixels
   {
@@ -308,7 +327,8 @@ public class SysFontTexture : ISysFontTexturable
         (_alignment != _lastAlignment) ||
         (_isMultiLine != _lastIsMultiLine) ||
         (_maxWidthPixels != _lastMaxWidthPixels) ||
-        (_maxHeightPixels != _lastMaxHeightPixels);
+        (_maxHeightPixels != _lastMaxHeightPixels) ||
+        (_scaleSize != _lastScaleSize);
     }
   }
 
@@ -357,6 +377,7 @@ public class SysFontTexture : ISysFontTexturable
     _lastIsMultiLine = _isMultiLine;
     _lastMaxWidthPixels = _maxWidthPixels;
     _lastMaxHeightPixels = _maxHeightPixels;
+    _lastScaleSize = _scaleSize;
     return true;
   }
 
