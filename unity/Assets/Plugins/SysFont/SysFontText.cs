@@ -406,8 +406,8 @@ public class SysFontText : MonoBehaviour, ISysFontTexturable
   public void UpdateScale()
   {
     Vector3 scale = _transform.localScale;
-      scale.x = (float)_texture.TextWidthPixels * _texture.ScaleSize;
-      scale.y = (float)_texture.TextHeightPixels * _texture.ScaleSize;
+    scale.x = (float)_texture.TextWidthPixels * _texture.ScaleSize;
+    scale.y = (float)_texture.TextHeightPixels * _texture.ScaleSize;
     _transform.localScale = scale;
   }
 

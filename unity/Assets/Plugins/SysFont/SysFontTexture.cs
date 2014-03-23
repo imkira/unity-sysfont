@@ -58,7 +58,7 @@ public class SysFontTexture : ISysFontTexturable
   protected int _maxHeightPixels = 2048;
 
   [SerializeField]
-  protected float _scaleSize = 0.0015f;
+  protected float _scaleSize = 1f;
 
   protected string _lastText;
   public string Text
