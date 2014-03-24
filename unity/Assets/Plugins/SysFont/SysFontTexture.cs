@@ -254,7 +254,7 @@ public class SysFontTexture : ISysFontTexturable
       }
       set
       {
-         if(_scaleSize != value)
+         if (_scaleSize != value)
          {
             _scaleSize = value;
          }

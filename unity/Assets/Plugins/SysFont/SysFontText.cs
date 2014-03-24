@@ -204,14 +204,16 @@ public class SysFontText : MonoBehaviour, ISysFontTexturable
   }
 
   public float ScaleSize
-   {
-      get{
-         return _texture.ScaleSize;
-      }
-      set{
-         _texture.ScaleSize = value;
-      }
-   }
+  {
+    get
+    {
+      return _texture.ScaleSize;
+    }
+    set
+    {
+      _texture.ScaleSize = value;
+    }
+  }
   #endregion
 
   [SerializeField]
