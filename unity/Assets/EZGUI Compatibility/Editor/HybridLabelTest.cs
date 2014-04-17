@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using NSubstitute;
 using NUnit.Framework;
 
@@ -7,15 +7,15 @@ namespace UnityTest
 	[TestFixture]
 	internal class HybridLabelTest 
 	{
-		private ILabel ezguiLabel;
-		private ILabel sysFontLabel;
+		private ILabelAdapter ezguiLabel;
+		private ILabelAdapter sysFontLabel;
 		private HybridLabel label;
 
 		[SetUp]
 		public void SetUp ()
 		{
-			ezguiLabel = Substitute.For<ILabel> ();
-			sysFontLabel = Substitute.For<ILabel> ();
+			ezguiLabel = Substitute.For<ILabelAdapter> ();
+			sysFontLabel = Substitute.For<ILabelAdapter> ();
 
 			label = new HybridLabel (ezguiLabel, sysFontLabel);
 		}
@@ -76,7 +76,7 @@ namespace UnityTest
 		public void CreateSpecialFontOnDemand ()
 		{
 			var factory = Substitute.For<ILabelFactory> ();
-			factory.CreateLabel (Arg.Any<ILabel> ()).Returns (sysFontLabel);
+			factory.CreateLabel (Arg.Any<ILabelAdapter> ()).Returns (sysFontLabel);
 
 			label = new HybridLabel (ezguiLabel, factory);
 			Assert.AreSame (ezguiLabel, label.EnabledLabel);

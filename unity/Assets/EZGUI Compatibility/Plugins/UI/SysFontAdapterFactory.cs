@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class SysFontAdapterFactory : ILabelFactory
 {
-	public ILabel CreateLabel (ILabel baseLabel)
+	public ILabelAdapter CreateLabel (ILabelAdapter baseLabel)
 	{
 		SysFontAdapter newLabel = InstantiateLabel (baseLabel.Transform);
 		newLabel.CopyPropertiesOf (baseLabel);

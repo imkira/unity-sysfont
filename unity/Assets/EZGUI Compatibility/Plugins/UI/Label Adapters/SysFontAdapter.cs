@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class SysFontAdapter : SysFontText, ILabel
+public class SysFontAdapter : SysFontText, ILabelAdapter
 {
 	private const int MAX_WIDTH = 2048;
 	private const string NAME_SUFFIX = "(SysFont)";
@@ -61,7 +61,7 @@ public class SysFontAdapter : SysFontText, ILabel
 		get { return _transform; }
 	}
 
-	public void CopyPropertiesOf (ILabel baseLabel)
+	public void CopyPropertiesOf (ILabelAdapter baseLabel)
 	{
 		Text = baseLabel.Text;
 		FontSize = baseLabel.FontSize;

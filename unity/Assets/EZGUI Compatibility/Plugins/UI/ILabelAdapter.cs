@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public interface ILabel
+public interface ILabelAdapter
 {
 	bool IsVisible
 	{

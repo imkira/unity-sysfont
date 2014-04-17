@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using NSubstitute;
 using NUnit.Framework;
 using System.Collections.Generic;
@@ -38,8 +38,8 @@ namespace UnityTest
 		[Test]
 		public void CreatesAndCloneLabelFromOther ()
 		{
-			ILabel baseLabel = GetDefaultFakeLabel ();
-			ILabel label = factory.CreateLabel (baseLabel);
+			ILabelAdapter baseLabel = GetDefaultFakeLabel ();
+			ILabelAdapter label = factory.CreateLabel (baseLabel);
 
 			Assert.IsNotNull (label);
 			AssertDefaultLabelProperties (label);
@@ -65,9 +65,9 @@ namespace UnityTest
 			}
 		}
 
-		private ILabel GetDefaultFakeLabel ()
+		private ILabelAdapter GetDefaultFakeLabel ()
 		{
-			var substitute = Substitute.For <ILabel> ();
+			var substitute = Substitute.For <ILabelAdapter> ();
 
 			substitute.Text.Returns (default_text);
 			substitute.FontSize.Returns (default_fontSize);
@@ -80,7 +80,7 @@ namespace UnityTest
 			return substitute;
 		}
 
-		private void AssertDefaultLabelProperties (ILabel label)
+		private void AssertDefaultLabelProperties (ILabelAdapter label)
 		{
 			Assert.AreEqual (default_text, label.Text, "Text");
 			Assert.AreEqual (default_fontSize, label.FontSize, "Font Size");

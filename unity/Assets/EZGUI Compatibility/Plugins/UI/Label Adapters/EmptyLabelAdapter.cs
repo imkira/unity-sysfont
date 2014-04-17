@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class EmptyLabelAdapter : ILabel 
+public class EmptyLabelAdapter : ILabelAdapter 
 {
 	public bool IsVisible
 	{

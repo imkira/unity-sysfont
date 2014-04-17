@@ -4,8 +4,8 @@ using System.Collections;
 public class HybridLabel
 {
 	private string text;
-	private ILabel defaultLabel;
-	private ILabel specialLabel;
+	private ILabelAdapter defaultLabel;
+	private ILabelAdapter specialLabel;
 
 	public string Text 
 	{ 
@@ -21,7 +21,7 @@ public class HybridLabel
 		}
 	}
 
-	public ILabel EnabledLabel
+	public ILabelAdapter EnabledLabel
 	{
 		get
 		{
@@ -29,7 +29,7 @@ public class HybridLabel
 		}
 	}
 
-	private ILabel DisabledLabel
+	private ILabelAdapter DisabledLabel
 	{
 		get
 		{
@@ -48,20 +48,20 @@ public class HybridLabel
 		}
 	}
 
-	public HybridLabel (ILabel defaultLabel)
+	public HybridLabel (ILabelAdapter defaultLabel)
 	{
 		this.defaultLabel = defaultLabel;
 		this.specialLabel = new EmptyLabelAdapter ();
 		UseDefaultLabel = true;
 	}
 
-	public HybridLabel (ILabel defaultLabel, ILabel specialLabel) : this (defaultLabel)
+	public HybridLabel (ILabelAdapter defaultLabel, ILabelAdapter specialLabel) : this (defaultLabel)
 	{
 		this.specialLabel = specialLabel;
 		UseDefaultLabel = true;
 	}
 
-	public HybridLabel (ILabel defaultLabel, ILabelFactory labelFactory) : this (defaultLabel)
+	public HybridLabel (ILabelAdapter defaultLabel, ILabelFactory labelFactory) : this (defaultLabel)
 	{
 		specialLabel = labelFactory.CreateLabel (defaultLabel);
 		UseDefaultLabel = true;

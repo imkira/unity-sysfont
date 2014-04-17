@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class SpriteTextAdapter : SpriteText, ILabel
+public class SpriteTextAdapter : SpriteText, ILabelAdapter
 {
 	private Transform _transform;
 
