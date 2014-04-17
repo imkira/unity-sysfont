@@ -24,7 +24,7 @@
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(SysFontText))]
+[CustomEditor(typeof(SysFontText), true)]
 public class SysFontTextEditor : SysFontEditor
 {
   protected SysFontText _text;

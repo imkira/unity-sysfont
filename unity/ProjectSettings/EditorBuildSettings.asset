@@ -6,4 +6,4 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/SysFont/Demo/unity-sysfont-demo.unity
+    path: Assets/EZGUI Compatibility/Scenes/ezgui-sysfont-demo.unity
