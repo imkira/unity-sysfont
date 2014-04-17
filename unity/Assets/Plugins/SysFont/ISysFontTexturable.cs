@@ -115,10 +115,4 @@ public interface ISysFontTexturable
   {
     get;
   }
-
-  float ScaleSize
-  {
-    get;
-    set;
-  }
 }

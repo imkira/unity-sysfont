@@ -167,20 +167,9 @@ public class ISysFontTexturableEditor : SysFontEditor
         RegisterUndo(target, "SysFont Max Height Pixels Change");
         texturable.MaxHeightPixels = maxHeightPixels;
       }
+
       LookLikeControls();
     }
     GUILayout.EndHorizontal();
-   //
-   //ScaleSize property
-   //
-   EditorGUIUtility.LookLikeControls(100f,110f);
-   float scaleSize = EditorGUILayout.FloatField("Camera Scale Size",
-         texturable.ScaleSize);
-   if(scaleSize != texturable.ScaleSize)
-   {
-      RegisterUndo(target,"SysFont Scale Size Change");
-      texturable.ScaleSize = scaleSize;
-   }
-   LookLikeControls();
   }
 }

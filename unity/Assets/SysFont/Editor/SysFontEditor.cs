@@ -28,12 +28,12 @@ public class SysFontEditor : Editor
 {
   public static void LookLikeControls(float labelWidth = 70f)
   {
-    EditorGUIUtility.LookLikeControls(labelWidth);
+    EditorGUIUtility.labelWidth = labelWidth;
   }
 
   public static void RegisterUndo(Object obj, string name)
   {
-    Undo.RegisterUndo(obj, name);
+    Undo.RecordObject(obj, name);
     EditorUtility.SetDirty(obj);
   }
 }
